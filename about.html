@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us - Young Planet Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+body {
+    background: #0a0f0d;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== NAVBAR / HEADER ====== */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 5vw, 60px);
+    background: rgba(0, 50, 20, 0.75);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(168, 230, 207, 0.2);
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 18px);
+    height: 100%;
+}
+
+.logo-box img {
+    height: clamp(40px, 8vw, 60px);
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.logo-box img:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+}
+
+.logo-box .logo-text {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 600;
+    letter-spacing: clamp(2px, 1vw, 5px);
+    color: #a8e6cf;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    transition: color 0.4s ease, transform 0.4s ease;
+    user-select: none;
+}
+
+.logo-box .logo-text:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    text-shadow: 0 3px 15px rgba(168, 230, 207, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(15px, 3vw, 40px);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: clamp(12px, 2vw, 15px);
+    position: relative;
+    transition: color 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #a8e6cf;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #a8e6cf;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ====== USER PROFILE IN HEADER ====== */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 12px);
+    padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 20px);
+    background: rgba(168, 230, 207, 0.15);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.user-profile:hover {
+    background: rgba(168, 230, 207, 0.25);
+    transform: translateY(-2px);
+}
+
+.user-profile .user-icon {
+    width: clamp(30px, 6vw, 35px);
+    height: clamp(30px, 6vw, 35px);
+    background: #0f3d25;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: clamp(12px, 2vw, 14px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.user-profile .user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.user-profile .user-greeting {
+    font-size: clamp(10px, 1.5vw, 12px);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+.user-profile .user-name {
+    font-size: clamp(12px, 2vw, 15px);
+    color: #a8e6cf;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Dropdown menu */
+.user-dropdown {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: white;
+    border-radius: clamp(12px, 2vw, 15px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: clamp(8px, 1.5vw, 10px);
+    min-width: clamp(160px, 30vw, 180px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.user-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: clamp(8px, 1.5vw, 10px);
+    transition: all 0.3s ease;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 500;
+}
+
+.user-dropdown a:hover {
+    background: #f0f0f0;
+    color: #0f3d25;
+}
+
+.user-dropdown .logout-btn {
+    color: #d32f2f;
+    border-top: 1px solid #e0e0e0;
+    margin-top: clamp(4px, 1vw, 5px);
+    padding-top: clamp(10px, 2vw, 15px);
+}
+
+.user-dropdown .logout-btn:hover {
+    background: #ffebee;
+}
+
+/* ====== SDG GOALS SECTION ====== */
+.sdg-section {
+    width: 100%;
+    padding: clamp(80px, 12vw, 150px) clamp(20px, 5vw, 80px) clamp(60px, 10vw, 100px);
+    background: linear-gradient(135deg, #2d5f3f 0%, #3d7a52 50%, #4d9565 100%);
+    position: relative;
+    opacity: 0;
+    animation: fadeInSection 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sdg-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sdg-container h1 {
+    font-size: clamp(32px, 7vw, 64px);
+    font-weight: 800;
+    margin-bottom: clamp(25px, 5vw, 40px);
+    color: white;
+    letter-spacing: clamp(0.5px, 1vw, 1px);
+    line-height: 1.2;
+}
+
+.sdg-container p {
+    font-size: clamp(15px, 3.5vw, 20px);
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    max-width: 100%;
+}
+
+/* ====== MEET OUR TEAM SECTION ====== */
+.team-section {
+    width: 100%;
+    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px);
+    background: #0a0f0d;
+    position: relative;
+}
+
+.team-header {
+    margin-bottom: clamp(40px, 8vw, 60px);
+    opacity: 0;
+    animation: fadeInSection 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.team-header h2 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    color: #56c596;
+    letter-spacing: clamp(0.5px, 1vw, 1px);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    line-height: 1.2;
+}
+
+.year-badge {
+    display: inline-block;
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px);
+    background: transparent;
+    border: 2px solid #56c596;
+    color: #56c596;
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: 600;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.year-badge:hover {
+    background: rgba(86, 197, 150, 0.1);
+    transform: translateY(-2px);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(20px, 4vw, 40px);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.team-card {
+    position: relative;
+    border-radius: clamp(15px, 3vw, 20px);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    height: clamp(300px, 50vh, 400px);
+    min-height: 280px;
+}
+
+.team-card:nth-child(1) { animation-delay: 0.7s; }
+.team-card:nth-child(2) { animation-delay: 0.85s; }
+.team-card:nth-child(3) { animation-delay: 1s; }
+.team-card:nth-child(4) { animation-delay: 1.15s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-card:hover {
+    transform: translateY(clamp(-5px, -1vw, -10px));
+    box-shadow: 0 20px 60px rgba(86, 197, 150, 0.3);
+}
+
+.team-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-card-image {
+    transform: scale(1.1);
+}
+
+.team-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 20px) clamp(15px, 3vw, 20px);
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-card-overlay {
+    background: linear-gradient(to top, rgba(10, 61, 37, 0.98) 0%, rgba(10, 61, 37, 0.85) 70%, transparent 100%);
+}
+
+.team-card-name {
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: clamp(3px, 1vw, 5px);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.team-card-position {
+    font-size: clamp(12px, 2vw, 14px);
+    color: #56c596;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.team-card-socials {
+    display: flex;
+    gap: clamp(10px, 2vw, 15px);
+    margin-top: clamp(12px, 2.5vw, 20px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-card-socials {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-icon {
+    width: clamp(32px, 6vw, 40px);
+    height: clamp(32px, 6vw, 40px);
+    border-radius: 50%;
+    background: rgba(86, 197, 150, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.social-icon:hover {
+    background: #56c596;
+    transform: translateY(-3px);
+}
+
+.social-icon svg {
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
+    fill: #56c596;
+    transition: fill 0.3s ease;
+}
+
+.social-icon:hover svg {
+    fill: white;
+}
+
+/* ====== FOOTER SECTION ====== */
+footer {
+    width: 100%;
+    background: linear-gradient(135deg, #0a2818 0%, #0f3d25 50%, #145c3a 100%);
+    padding: clamp(50px, 8vw, 80px) clamp(20px, 5vw, 80px) clamp(20px, 4vw, 30px);
+    color: white;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(40px, 8vw, 80px);
+    margin-bottom: clamp(40px, 6vw, 60px);
+}
+
+@media (min-width: 1024px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.footer-section h3 {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700;
+    margin-bottom: clamp(20px, 3vw, 30px);
+    color: #a8e6cf;
+    letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: clamp(10px, 2vw, 15px);
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+.footer-section ul li a:hover {
+    color: #a8e6cf;
+    transform: translateX(5px);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 12px);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: all 0.3s ease;
+    margin-bottom: clamp(10px, 2vw, 15px);
+}
+
+.social-link:hover {
+    color: #a8e6cf;
+    transform: translateX(5px);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.about-us-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 3vw, 20px);
+}
+
+.about-us-header {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2.5vw, 15px);
+}
+
+.about-us-header img {
+    width: clamp(50px, 8vw, 60px);
+    height: clamp(50px, 8vw, 60px);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.about-us-header h4 {
+    font-size: clamp(18px, 3.5vw, 22px);
+    font-weight: 600;
+    color: #a8e6cf;
+    letter-spacing: 0.5px;
+}
+
+.about-us-section p {
+    font-size: clamp(13px, 2.5vw, 15px);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(168, 230, 207, 0.2);
+    padding-top: clamp(20px, 4vw, 30px);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(12px, 2vw, 14px);
+    letter-spacing: 0.5px;
+}
+
+/* ====== TABLET OPTIMIZATION (768px - 1023px) ====== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    header {
+        padding: clamp(11px, 2.5vw, 12px) clamp(25px, 4vw, 45px);
+    }
+
+    .logo-box .logo-text {
+        font-size: clamp(22px, 3.5vw, 26px);
+    }
+
+    nav ul {
+        gap: clamp(18px, 2.5vw, 30px);
+    }
+
+    nav ul li a {
+        font-size: clamp(13px, 1.8vw, 14px);
+    }
+
+    .sdg-section {
+        padding: clamp(100px, 10vw, 130px) clamp(25px, 4vw, 50px) clamp(50px, 8vw, 70px);
+    }
+
+    .sdg-container h1 {
+        font-size: clamp(38px, 6.5vw, 55px);
+    }
+
+    .sdg-container p {
+        font-size: clamp(15px, 2.8vw, 18px);
+    }
+
+    .team-section {
+        padding: clamp(50px, 6vw, 80px) clamp(25px, 4vw, 50px);
+    }
+
+    .team-header h2 {
+        font-size: clamp(32px, 5.5vw, 42px);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(24px, 4vw, 32px);
+    }
+}
+
+/* ====== LARGE DESKTOP (1024px+) ====== */
+@media (min-width: 1024px) {
+    header {
+        padding: 12px 60px;
+    }
+
+    .logo-box .logo-text {
+        font-size: 28px;
+        letter-spacing: 5px;
+    }
+
+    nav ul {
+        gap: 40px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+
+    .sdg-section {
+        padding: 150px 80px 100px 80px;
+    }
+
+    .sdg-container h1 {
+        font-size: 64px;
+    }
+
+    .sdg-container p {
+        font-size: 20px;
+    }
+
+    .team-section {
+        padding: 100px 80px;
+    }
+
+    .team-header h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+
+    .team-card {
+        height: 400px;
+    }
+
+    footer {
+        padding: 80px 80px 30px 80px;
+    }
+}
+
+/* ====== SMALL MOBILE (320px - 480px) ====== */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        padding: clamp(10px, 2vw, 11px) clamp(15px, 3vw, 20px);
+        flex-wrap: wrap;
+        gap: clamp(10px, 2vw, 15px);
+    }
+
+    .logo-box .logo-text {
+        font-size: clamp(18px, 3.5vw, 22px);
+        letter-spacing: clamp(1.5px, 1vw, 3px);
+    }
+
+    nav ul {
+        gap: clamp(12px, 2vw, 16px);
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    nav ul li a {
+        font-size: clamp(11px, 1.8vw, 12px);
+    }
+
+    .sdg-section {
+        padding: clamp(60px, 10vw, 80px) clamp(16px, 4vw, 20px) clamp(40px, 8vw, 50px);
+    }
+
+    .sdg-container h1 {
+        font-size: clamp(26px, 5.5vw, 36px);
+        margin-bottom: clamp(18px, 4vw, 25px);
+    }
+
+    .sdg-container p {
+        font-size: clamp(13px, 2.8vw, 15px);
+    }
+
+    .team-section {
+        padding: clamp(40px, 6vw, 60px) clamp(16px, 4vw, 20px);
+    }
+
+    .team-header {
+        margin-bottom: clamp(30px, 6vw, 40px);
+    }
+
+    .team-header h2 {
+        font-size: clamp(24px, 5.5vw, 32px);
+        margin-bottom: clamp(12px, 2.5vw, 16px);
+    }
+
+    .year-badge {
+        padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 20px);
+        font-size: clamp(12px, 2vw, 14px);
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(16px, 3vw, 20px);
+    }
+
+    .team-card {
+        height: clamp(250px, 60vw, 320px);
+    }
+
+    .team-card-overlay {
+        padding: clamp(16px, 3vw, 20px) clamp(12px, 2.5vw, 15px) clamp(12px, 2.5vw, 15px);
+    }
+
+    .team-card-name {
+        font-size: clamp(16px, 3.5vw, 20px);
+        margin-bottom: clamp(2px, 1vw, 3px);
+    }
+
+    .team-card-position {
+        font-size: clamp(11px, 1.8vw, 12px);
+    }
+
+    .team-card-socials {
+        gap: clamp(8px, 1.5vw, 10px);
+        margin-top: clamp(10px, 2vw, 14px);
+    }
+
+    .social-icon {
+        width: clamp(28px, 5vw, 35px);
+        height: clamp(28px, 5vw, 35px);
+    }
+
+    .social-icon svg {
+        width: clamp(14px, 2.5vw, 18px);
+        height: clamp(14px, 2.5vw, 18px);
+    }
+
+    footer {
+        padding: clamp(40px, 6vw, 50px) clamp(16px, 4vw, 20px) clamp(16px, 3vw, 20px);
+    }
+
+    .footer-container {
+        gap: clamp(32px, 6vw, 45px);
+        margin-bottom: clamp(30px, 5vw, 40px);
+    }
+
+    .footer-section h3 {
+        font-size: clamp(18px, 3.5vw, 22px);
+        margin-bottom: clamp(16px, 2.5vw, 20px);
+    }
+
+    .footer-section ul li a {
+        font-size: clamp(13px, 1.8vw, 14px);
+    }
+
+    .social-link {
+        font-size: clamp(13px, 1.8vw, 14px);
+    }
+
+    .about-us-header img {
+        width: clamp(45px, 7vw, 55px);
+        height: clamp(45px, 7vw, 55px);
+    }
+
+    .about-us-header h4 {
+        font-size: clamp(16px, 3vw, 19px);
+    }
+
+    .about-us-section p {
+        font-size: clamp(12px, 2vw, 13px);
+    }
+
+    .footer-bottom {
+        padding-top: clamp(16px, 3vw, 20px);
+        font-size: clamp(11px, 1.6vw, 12px);
+    }
+
+    .user-profile .user-text {
+        display: none;
+    }
+
+    .user-profile {
+        padding: clamp(6px, 1vw, 8px) clamp(10px, 2vw, 12px);
+    }
+}
+
+/* ====== EXTRA SMALL MOBILE (Below 320px) ====== */
+@media (max-width: 320px) {
+    html {
+        font-size: 13px;
+    }
+
+    header {
+        padding: clamp(9px, 1.8vw, 10px) clamp(12px, 2.5vw, 15px);
+    }
+
+    .logo-box .logo-text {
+        font-size: clamp(16px, 3vw, 19px);
+    }
+
+    nav ul li a {
+        font-size: clamp(10px, 1.5vw, 11px);
+    }
+
+    .sdg-section {
+        padding: clamp(50px, 8vw, 70px) clamp(14px, 3vw, 16px) clamp(32px, 6vw, 40px);
+    }
+
+    .sdg-container h1 {
+        font-size: clamp(22px, 5vw, 28px);
+    }
+
+    .sdg-container p {
+        font-size: clamp(12px, 2.3vw, 13px);
+    }
+
+    .team-section {
+        padding: clamp(32px, 5vw, 50px) clamp(14px, 3vw, 16px);
+    }
+
+    .team-header h2 {
+        font-size: clamp(20px, 5vw, 26px);
+    }
+
+    .team-card {
+        height: clamp(220px, 55vw, 280px);
+    }
+
+    .team-card-name {
+        font-size: clamp(14px, 3vw, 18px);
+    }
+
+    .team-card-position {
+        font-size: clamp(10px, 1.5vw, 11px);
+    }
+
+    .footer-section h3 {
+        font-size: clamp(16px, 3vw, 20px);
+    }
+
+    .footer-section ul li a {
+        font-size: clamp(12px, 1.6vw, 13px);
+    }
+}
+
+/* ====== LANDSCAPE MODE OPTIMIZATION ====== */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding: clamp(8px, 1.5vw, 10px) clamp(15px, 3vw, 30px);
+    }
+
+    .sdg-section {
+        padding: clamp(50px, 6vh, 100px) clamp(20px, 4vw, 50px) clamp(30px, 5vh, 50px);
+    }
+
+    .sdg-container h1 {
+        font-size: clamp(28px, 5vh, 48px);
+        margin-bottom: clamp(16px, 3vh, 24px);
+    }
+
+    .sdg-container p {
+        font-size: clamp(13px, 2.5vh, 16px);
+    }
+
+    .team-section {
+        padding: clamp(40px, 5vh, 60px) clamp(20px, 4vw, 50px);
+    }
+
+    .team-header h2 {
+        font-size: clamp(24px, 4.5vh, 36px);
+        margin-bottom: clamp(12px, 2vh, 16px);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(16px, 2.5vh, 24px);
+    }
+
+    .team-card {
+        height: clamp(200px, 35vh, 280px);
+    }
+
+    footer {
+        padding: clamp(40px, 5vh, 60px) clamp(20px, 4vw, 50px) clamp(20px, 3vh, 30px);
+    }
+}
+
+/* ====== TABLET LANDSCAPE (768px+, small height) ====== */
+@media (min-width: 768px) and (max-height: 600px) {
+    .sdg-section {
+        padding: clamp(80px, 6vh, 120px) clamp(40px, 5vw, 80px) clamp(40px, 5vh, 60px);
+    }
+
+    .team-section {
+        padding: clamp(50px, 5vh, 80px) clamp(40px, 5vw, 80px);
+    }
+
+    .team-grid {
+        gap: clamp(20px, 3vh, 30px);
+    }
+
+    footer {
+        padding: clamp(50px, 5vh, 80px) clamp(40px, 5vw, 80px) clamp(20px, 3vh, 30px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ====== HEADER / NAVIGATION ====== -->
+<header>
+    <div class="logo-box">
+        <img src="Images/LogoGreen.png" alt="YPL Logo" />
+        <span class="logo-text">YPL</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="Login.html" id="authLink">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ====== SDG GOALS SECTION ====== -->
+<section class="sdg-section">
+    <div class="sdg-container">
+        <h1>Our SDG Goals</h1>
+        <p>
+            Planting trees helps fight climate change by absorbing carbon dioxide, reducing greenhouse gases, cooling the environment, and protecting the planet from global warming. Additionally, Planting supports biodiversity, restores damaged ecosystems, prevents soil erosion, and helps protect endangered species by improving their habitats.
+        </p>
+    </div>
+</section>
+
+<!-- ====== MEET OUR TEAM SECTION ====== -->
+<section class="team-section">
+    <div class="team-header">
+        <h2>Meet our Team</h2>
+        <span class="year-badge">2025</span>
+    </div>
+
+    <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+            <img src="Images/Aziz.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">AbdelAziz Gamal</h3>
+                <p class="team-card-position">President & Founder</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/aziz_gamal_502?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="Azizgamal.502@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card">
+            <img src="Images/Ammar.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Ammar Hesham</h3>
+                <p class="team-card-position">Vice President</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/dv_of_ammaar?igsh=c3o1cDVjeWxqYzg3" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="ammarheshamhassan@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card">
+            <img src="Images/Shamy.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Mohamed Elshamy</h3>
+                <p class="team-card-position">IT & Web Officer</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/shamezo.shm?igsh=MTk2N3RiZTRmMHNxbg==" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="engshamezo@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="Images/Alex.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Yousef Ahmed</h3>
+                <p class="team-card-position">Outreach Director</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/yossefalex_?igsh=YmhzZTN5NGJ2MjI0" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="yossefahmed.alex@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="Images/Octa.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Yousef Alaa</h3>
+                <p class="team-card-position">Green Projects Coordinator</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/youssef.octa23?igsh=bTlrNGcweHk1OHR2" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="eman.alaa6040@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="Images/Moghni.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Ahmed Moghni</h3>
+                <p class="team-card-position">Green Projects Coordinator</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/ahmedemad168b?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:email@example.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="Images/Sami.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Sami Swelam</h3>
+                <p class="team-card-position">Green Projects Coordinator</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="samytonygo@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="Images/Asser.png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Asser Sameh</h3>
+                <p class="team-card-position">Design Lead</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/sergany.jpg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="asserelsergany@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+            <div class="team-card">
+            <img src="D:\Grade 11 Capstone\YPL 2\young planet leaders (9).png" alt="Team Member" class="team-card-image">
+            <div class="team-card-overlay">
+                <h3 class="team-card-name">Adham Wahdan</h3>
+                <p class="team-card-position">Co-Design Lead</p>
+                <div class="team-card-socials">
+                    <a href="https://www.instagram.com/wahdan.png?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="adhom.ayman2008@gmail.com" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+201234567890" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <script>
+    // ====== USER AUTHENTICATION CHECK ======
+    document.addEventListener('DOMContentLoaded', () => {
+        const authLink = document.getElementById('authLink');
+        const teamName = localStorage.getItem('team');
+        
+        if (teamName && authLink) {
+            // User is logged in - replace login link with user profile
+            const navList = authLink.parentElement.parentElement;
+            const userProfileHTML = `
+                <li>
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-icon">${teamName.charAt(0).toUpperCase()}</div>
+                        <div class="user-text">
+                            <span class="user-greeting">Hi,</span>
+                            <span class="user-name">${teamName}</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="Dashboard.html">Dashboard</a>
+                        <a href="#" class="logout-btn" id="logoutBtn">Logout</a>
+                    </div>
+                </li>
+            `;
+            
+            authLink.parentElement.innerHTML = userProfileHTML;
+            
+            // Toggle dropdown menu
+            const userProfile = document.getElementById('userProfile');
+            const userDropdown = document.getElementById('userDropdown');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            if (userProfile && userDropdown) {
+                userProfile.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    userDropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', () => {
+                    userDropdown.classList.remove('show');
+                });
+            }
+            
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('team');
+                    window.location.href = 'index.html';
+                });
+            }
+        }
+    });
+</script>

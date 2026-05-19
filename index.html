@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Young Planet Leaders - Egypt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ====== SMOOTH SCROLL ====== */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+body {
+    background: url('Images/Bg.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(168, 230, 207, 0.6);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 230, 207, 0.9);
+}
+
+/* ====== TRANSITION SCREEN ====== */
+#transition {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0a2818 0%, #0f3d25 50%, #145c3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    animation: smoothFadeOut 1.2s ease-in-out forwards;
+    animation-delay: 3s;
+    z-index: 1000;
+    padding: 20px;
+}
+
+#transition img {
+    width: clamp(120px, 25vw, 180px);
+    opacity: 0;
+    animation: smoothFadeIn 1.5s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+#transition h1 {
+    margin-top: 30px;
+    font-size: clamp(28px, 6vw, 42px);
+    letter-spacing: clamp(4px, 1vw, 8px);
+    font-weight: 700;
+    opacity: 0;
+    animation: smoothFadeIn 1.5s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes smoothFadeIn {
+    0% { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes smoothFadeOut {
+    0% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ====== NAVBAR / HEADER ====== */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 5vw, 60px);
+    background: rgba(0, 50, 20, 0.75);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(168, 230, 207, 0.2);
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 18px);
+    height: 100%;
+}
+
+.logo-box img {
+    height: clamp(40px, 8vw, 60px);
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.logo-box img:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+}
+
+.logo-box .logo-text {
+    font-size: clamp(18px, 4vw, 28px);
+    font-weight: 600;
+    letter-spacing: clamp(2px, 1vw, 5px);
+    color: #a8e6cf;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    transition: color 0.4s ease, transform 0.4s ease;
+    user-select: none;
+}
+
+.logo-box .logo-text:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    text-shadow: 0 3px 15px rgba(168, 230, 207, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: clamp(12px, 2vw, 15px);
+    position: relative;
+    transition: color 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #a8e6cf;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #a8e6cf;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ====== USER PROFILE IN HEADER ====== */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: clamp(6px, 1vw, 8px) clamp(12px, 3vw, 20px);
+    background: rgba(168, 230, 207, 0.15);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.user-profile:hover {
+    background: rgba(168, 230, 207, 0.25);
+    transform: translateY(-2px);
+}
+
+.user-profile .user-icon {
+    width: clamp(30px, 6vw, 35px);
+    height: clamp(30px, 6vw, 35px);
+    background: #0f3d25;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: clamp(12px, 2vw, 14px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.user-profile .user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.user-profile .user-greeting {
+    font-size: clamp(10px, 1.5vw, 12px);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+.user-profile .user-name {
+    font-size: clamp(12px, 2vw, 15px);
+    color: #a8e6cf;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Dropdown menu */
+.user-dropdown {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.user-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 500;
+}
+
+.user-dropdown a:hover {
+    background: #f0f0f0;
+    color: #0f3d25;
+}
+
+.user-dropdown .logout-btn {
+    color: #d32f2f;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 5px;
+    padding-top: 15px;
+}
+
+.user-dropdown .logout-btn:hover {
+    background: #ffebee;
+}
+
+/* ====== HERO SECTION ====== */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(120px, 20vw, 150px) clamp(20px, 5vw, 60px) clamp(40px, 10vw, 60px);
+    background: rgba(0, 40, 20, 0.4);
+}
+
+.hero h1 {
+    font-size: clamp(32px, 8vw, 72px);
+    font-weight: 700;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    display: inline-block;
+    position: relative;
+    opacity: 1;
+    max-width: 100%;
+}
+
+.hero h1 .typed-text {
+    overflow: hidden;
+    border-right: clamp(2px, 0.5vw, 3px) solid #a8e6cf;
+    white-space: nowrap;
+    display: inline-block;
+    animation: typing 3.5s steps(30, end) 4.5s forwards, blink-caret 0.75s step-end 4.5s infinite;
+    max-width: 0;
+    padding-right: 5px;
+}
+
+@keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 1200px; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #a8e6cf; }
+}
+
+.hero h1 .typed-text.finished {
+    border-right: none;
+    animation: none;
+    max-width: 1200px;
+    overflow: visible;
+}
+
+.hero p {
+    margin-top: clamp(15px, 4vw, 20px);
+    font-size: clamp(14px, 3.5vw, 22px);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
+    animation-delay: 8.5s;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 90%;
+}
+
+@keyframes fadeInSection {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== PROJECT OVERVIEW SECTION ====== */
+.overview-section {
+    width: 100%;
+    padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px);
+    background: url('Images/blablabla.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.overview-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.overview-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overview-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(30px, 5vw, 60px);
+    position: relative;
+    z-index: 2;
+}
+
+.overview-text {
+    flex: 1;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out 0.3s, transform 1.2s ease-out 0.3s;
+    width: 100%;
+    max-width: 800px;
+}
+
+.overview-section.visible .overview-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overview-text h2 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    color: #a8e6cf;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.overview-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a8e6cf, transparent);
+    transition: width 1s ease-out 0.6s;
+    border-radius: 2px;
+}
+
+.overview-section.visible .overview-text h2::after {
+    width: 100%;
+}
+
+.overview-text p {
+    font-size: clamp(15px, 3vw, 19px);
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: clamp(20px, 4vw, 35px);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* ====== MEET OUR TEAM SECTION ====== */
+.team-section {
+    width: 100%;
+    padding: clamp(40px, 8vw, 80px);
+    background: #e8f5ef;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.team-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 5vw, 60px);
+    min-height: auto;
+    padding: 0;
+}
+
+.team-image {
+    flex: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1.2s ease-out 0.3s, transform 1.2s ease-out 0.3s;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    order: 2;
+}
+
+.team-section.visible .team-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.team-image img {
+    width: 100%;
+    height: clamp(250px, 50vh, 450px);
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.team-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(40px, 6vw, 60px);
+    background: white;
+    border-radius: 20px;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1.2s ease-out 0.5s, transform 1.2s ease-out 0.5s;
+    width: 100%;
+    max-width: 100%;
+    order: 1;
+}
+
+.team-section.visible .team-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.team-content h2 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: clamp(20px, 4vw, 40px);
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.team-content p {
+    font-size: clamp(15px, 3vw, 20px);
+    line-height: 1.8;
+    color: #7a7a7a;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    max-width: 500px;
+}
+
+.team-button {
+    display: inline-block;
+    padding: clamp(14px, 2vw, 18px) clamp(40px, 8vw, 60px);
+    background: #0f3d25;
+    color: white;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(15, 61, 37, 0.3);
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.team-button:hover {
+    background: #0a2818;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(168, 230, 207, 0.4);
+}
+
+/* ====== DASHBOARD SECTION STYLING ====== */
+.dashboard-section {
+    width: 100%;
+    padding: clamp(40px, 8vw, 80px);
+    background: #d4f1e3;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dashboard-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 5vw, 60px);
+    min-height: auto;
+    padding: 0;
+}
+
+.dashboard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(40px, 6vw, 60px);
+    background: white;
+    border-radius: 20px;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1.2s ease-out 0.3s, transform 1.2s ease-out 0.3s;
+    width: 100%;
+    max-width: 100%;
+}
+
+.dashboard-section.visible .dashboard-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.dashboard-content h2 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: clamp(20px, 4vw, 40px);
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.dashboard-content p {
+    font-size: clamp(15px, 3vw, 20px);
+    line-height: 1.8;
+    color: #7a7a7a;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    max-width: 500px;
+}
+
+.dashboard-button {
+    display: inline-block;
+    padding: clamp(14px, 2vw, 18px) clamp(40px, 8vw, 60px);
+    background: #0f3d25;
+    color: white;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(15, 61, 37, 0.3);
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.dashboard-button:hover {
+    background: #0a2818;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(168, 230, 207, 0.4);
+}
+
+.dashboard-image {
+    flex: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1.2s ease-out 0.5s, transform 1.2s ease-out 0.5s;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+.dashboard-section.visible .dashboard-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.dashboard-image img {
+    width: 100%;
+    height: clamp(250px, 50vh, 450px);
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== FOOTER SECTION ====== */
+footer {
+    width: 100%;
+    background: linear-gradient(135deg, #0a2818 0%, #0f3d25 50%, #145c3a 100%);
+    padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 80px) clamp(20px, 4vw, 30px);
+    color: white;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(40px, 8vw, 80px);
+    margin-bottom: clamp(40px, 6vw, 60px);
+}
+
+.footer-section h3 {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700;
+    margin-bottom: clamp(20px, 3vw, 30px);
+    color: #a8e6cf;
+    letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: clamp(10px, 2vw, 15px);
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+.footer-section ul li a:hover {
+    color: #a8e6cf;
+    transform: translateX(5px);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: all 0.3s ease;
+    margin-bottom: clamp(10px, 2vw, 15px);
+}
+
+.social-link:hover {
+    color: #a8e6cf;
+    transform: translateX(5px);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.about-us-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-us-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.about-us-header img {
+    width: clamp(50px, 8vw, 60px);
+    height: clamp(50px, 8vw, 60px);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.about-us-header h4 {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    color: #a8e6cf;
+    letter-spacing: 0.5px;
+}
+
+.about-us-section p {
+    font-size: clamp(13px, 2vw, 15px);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(168, 230, 207, 0.2);
+    padding-top: clamp(20px, 4vw, 30px);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(12px, 2vw, 14px);
+    letter-spacing: 0.5px;
+}
+
+/* ====== TABLET OPTIMIZATION (768px - 1023px) ====== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    header {
+        padding: 12px clamp(20px, 3vw, 40px);
+    }
+
+    nav ul {
+        gap: clamp(15px, 2vw, 30px);
+    }
+
+    .hero {
+        padding-top: clamp(100px, 15vw, 140px);
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 7vw, 60px);
+    }
+
+    .team-container {
+        flex-direction: column;
+        padding: clamp(40px, 5vw, 60px);
+    }
+
+    .team-image {
+        width: 100%;
+        order: 2;
+    }
+
+    .team-image img {
+        height: clamp(300px, 45vh, 400px);
+        border-radius: 25px;
+    }
+
+    .team-content {
+        width: 100%;
+        order: 1;
+        border-radius: 25px;
+        padding: clamp(40px, 5vw, 55px);
+    }
+
+    .dashboard-container {
+        flex-direction: column-reverse;
+        padding: clamp(40px, 5vw, 60px);
+    }
+
+    .dashboard-image {
+        width: 100%;
+        order: 1;
+    }
+
+    .dashboard-image img {
+        height: clamp(300px, 45vh, 400px);
+        border-radius: 25px;
+    }
+
+    .dashboard-content {
+        width: 100%;
+        order: 2;
+        border-radius: 25px;
+        padding: clamp(40px, 5vw, 55px);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(30px, 5vw, 60px);
+    }
+}
+
+/* ====== LARGE DESKTOP (1024px+) ====== */
+@media (min-width: 1024px) {
+    .team-container {
+        flex-direction: row;
+        padding: clamp(60px, 8vw, 100px);
+    }
+
+    .team-image {
+        order: 1;
+        max-width: 50%;
+        flex: 1;
+    }
+
+    .team-content {
+        order: 2;
+        margin-left: -80px;
+        max-width: 600px;
+        padding: clamp(50px, 6vw, 80px);
+    }
+
+    .dashboard-container {
+        flex-direction: row;
+        padding: clamp(60px, 8vw, 100px);
+    }
+
+    .dashboard-image {
+        order: 2;
+        max-width: 50%;
+        flex: 1;
+    }
+
+    .dashboard-content {
+        order: 1;
+        margin-right: -80px;
+        max-width: 600px;
+        padding: clamp(50px, 6vw, 80px);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ====== SMALL MOBILE (320px - 480px) ====== */
+@media (max-width: 480px) {
+    * {
+        font-size: 14px;
+    }
+
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 10px clamp(12px, 3vw, 20px);
+    }
+
+    .logo-box {
+        gap: clamp(8px, 2vw, 12px);
+    }
+
+    .logo-box img {
+        height: clamp(35px, 7vw, 45px);
+    }
+
+    .logo-box .logo-text {
+        font-size: clamp(16px, 3.5vw, 22px);
+        letter-spacing: clamp(1px, 0.5vw, 3px);
+    }
+
+    nav ul {
+        gap: clamp(12px, 2vw, 18px);
+    }
+
+    nav ul li a {
+        font-size: clamp(11px, 1.8vw, 13px);
+    }
+
+    .user-profile {
+        padding: clamp(6px, 1vw, 8px) clamp(8px, 2vw, 12px);
+    }
+
+    .user-profile .user-icon {
+        width: clamp(28px, 5vw, 32px);
+        height: clamp(28px, 5vw, 32px);
+        font-size: clamp(11px, 1.5vw, 12px);
+    }
+
+    .user-profile .user-text {
+        display: none;
+    }
+
+    .hero {
+        padding-top: clamp(80px, 18vw, 100px);
+        padding-bottom: clamp(30px, 8vw, 40px);
+        min-height: 80vh;
+    }
+
+    .hero h1 {
+        font-size: clamp(28px, 7vw, 40px);
+        letter-spacing: -0.5px;
+    }
+
+    .hero h1 .typed-text {
+        border-right: 2px solid #a8e6cf;
+        animation: typing 3s steps(20, end) 4.5s forwards;
+    }
+
+    .hero p {
+        font-size: clamp(13px, 3vw, 16px);
+        max-width: 95%;
+    }
+
+    .overview-section {
+        padding: clamp(40px, 6vw, 60px) clamp(16px, 4vw, 20px);
+    }
+
+    .overview-text h2 {
+        font-size: clamp(24px, 5.5vw, 36px);
+        margin-bottom: clamp(12px, 2.5vw, 16px);
+    }
+
+    .overview-text p {
+        font-size: clamp(13px, 2.8vw, 16px);
+        margin-top: clamp(15px, 3vw, 20px);
+    }
+
+    .team-section {
+        padding: clamp(30px, 6vw, 50px) clamp(16px, 4vw, 20px);
+    }
+
+    .team-container {
+        gap: clamp(16px, 4vw, 30px);
+        padding: 0;
+    }
+
+    .team-image {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .team-image img {
+        height: clamp(220px, 40vh, 300px);
+        border-radius: 16px;
+    }
+
+    .team-content {
+        padding: clamp(32px, 5vw, 45px);
+        border-radius: 16px;
+        margin: 0;
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .team-content h2 {
+        font-size: clamp(24px, 5vw, 32px);
+        margin-bottom: clamp(16px, 3vw, 24px);
+    }
+
+    .team-content p {
+        font-size: clamp(13px, 2.8vw, 16px);
+        margin-bottom: clamp(24px, 4vw, 32px);
+    }
+
+    .team-button {
+        padding: clamp(12px, 2vw, 14px) clamp(32px, 6vw, 45px);
+        font-size: clamp(12px, 1.8vw, 14px);
+    }
+
+    .dashboard-section {
+        padding: clamp(30px, 6vw, 50px) clamp(16px, 4vw, 20px);
+    }
+
+    .dashboard-container {
+        gap: clamp(16px, 4vw, 30px);
+        padding: 0;
+    }
+
+    .dashboard-image {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .dashboard-image img {
+        height: clamp(220px, 40vh, 300px);
+        border-radius: 16px;
+    }
+
+    .dashboard-content {
+        padding: clamp(32px, 5vw, 45px);
+        border-radius: 16px;
+        margin: 0;
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .dashboard-content h2 {
+        font-size: clamp(24px, 5vw, 32px);
+        margin-bottom: clamp(16px, 3vw, 24px);
+    }
+
+    .dashboard-content p {
+        font-size: clamp(13px, 2.8vw, 16px);
+        margin-bottom: clamp(24px, 4vw, 32px);
+    }
+
+    .dashboard-button {
+        padding: clamp(12px, 2vw, 14px) clamp(32px, 6vw, 45px);
+        font-size: clamp(12px, 1.8vw, 14px);
+    }
+
+    footer {
+        padding: clamp(30px, 6vw, 50px) clamp(16px, 4vw, 20px) clamp(16px, 3vw, 20px);
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: clamp(32px, 6vw, 45px);
+        margin-bottom: clamp(32px, 5vw, 40px);
+    }
+
+    .footer-section h3 {
+        font-size: clamp(18px, 4vw, 22px);
+        margin-bottom: clamp(16px, 2vw, 20px);
+    }
+
+    .footer-section ul li a {
+        font-size: clamp(13px, 1.8vw, 14px);
+    }
+
+    .social-link {
+        font-size: clamp(13px, 1.8vw, 14px);
+    }
+
+    .about-us-header img {
+        width: clamp(45px, 7vw, 55px);
+        height: clamp(45px, 7vw, 55px);
+    }
+
+    .about-us-header h4 {
+        font-size: clamp(16px, 3vw, 19px);
+    }
+
+    .about-us-section p {
+        font-size: clamp(12px, 1.8vw, 13px);
+    }
+
+    .footer-bottom {
+        padding-top: clamp(16px, 3vw, 20px);
+        font-size: clamp(11px, 1.6vw, 12px);
+    }
+
+    #transition h1 {
+        font-size: clamp(24px, 5vw, 32px);
+        letter-spacing: clamp(2px, 1vw, 4px);
+    }
+
+    #transition img {
+        width: clamp(100px, 22vw, 150px);
+    }
+}
+
+/* ====== EXTRA SMALL MOBILE (Below 320px) ====== */
+@media (max-width: 320px) {
+    html {
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: clamp(24px, 6.5vw, 32px);
+    }
+
+    .overview-text h2,
+    .team-content h2,
+    .dashboard-content h2 {
+        font-size: clamp(22px, 5vw, 28px);
+    }
+
+    nav ul {
+        gap: clamp(10px, 1.5vw, 14px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ====== TRANSITION / INTRO SCREEN ====== -->
+<div id="transition">
+    <img src="Images/LogoGreen.png" alt="YPL Logo" />
+    <h1>YPL</h1>
+</div>
+
+<!-- ====== HEADER / NAVIGATION ====== -->
+<header>
+    <div class="logo-box">
+        <img src="Images/LogoGreen.png" alt="YPL Logo" />
+        <span class="logo-text">YPL</span>
+    </div>
+
+    <nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="Dashboard.html">Dashboard</a></li>
+        <li><a href="Login.html" id="authLink">Login</a></li>
+    </ul>
+</nav>
+</header>
+
+<!-- ====== HERO SECTION ====== -->
+<section class="hero" id="home">
+    <h1><span class="typed-text">Young Planet Leaders in Egypt</span></h1>
+    <p>The environment for all | Community for all</p>
+</section>
+
+<!-- ====== PROJECT OVERVIEW SECTION ====== -->
+<section class="overview-section" id="about">
+    <div class="overview-container">
+        <div class="overview-text">
+            <h2>Overview</h2>
+            <p>
+                This project helps make the Egyptian schools green and beautiful. 
+                The goal is to use empty areas to plant new things because a clean 
+                environment helps students feel less stressed and get better grades.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ====== MEET OUR TEAM SECTION ====== -->
+<section class="team-section">
+    <div class="team-container">
+        <div class="team-image">
+            <img src="Images/MeetTeam.jpg" alt="YPL Team">
+        </div>
+        
+        <div class="team-content">
+            <h2>Meet Our Team</h2>
+            <p>
+                Our board decided to act, hoping to restore what we once had. 
+                Meet YPL Egypt, a team created to bring beauty back.
+            </p>
+            <a href="about.html" class="team-button">About Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ====== DASHBOARD SECTION HTML ====== -->
+<section class="dashboard-section">
+    <div class="dashboard-container">
+        <div class="dashboard-content">
+            <h2>Dashboard</h2>
+            <p>
+                Teams and their earned points are presented here, offering a clear and objective overview for accurate comparison and evaluation.
+            </p>
+            <a href="Dashboard.html" class="dashboard-button">Dashboard</a>
+        </div>
+        
+        <div class="dashboard-image">
+            <img src="Images/Community.jpg" alt="Dashboard">
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER SECTION ====== -->
+<footer>
+    <div class="footer-container">
+        <!-- Site Map -->
+        <div class="footer-section">
+            <h3>Site Map</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+
+        <!-- Keep In Touch -->
+        <div class="footer-section">
+            <h3>Keep In Touch</h3>
+            <a href="https://www.instagram.com/ypl_egypt/" target="_blank" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Instagram
+            </a>
+            <a href="https://www.linkedin.com/company/ypl-egypt" target="_blank" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="mailto:yplegypt@gmail.com" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                </svg>
+                yplegypt@gmail.com
+            </a>
+            <a href="tel:+201063903274" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                </svg>
+                +20 106 390 3274
+            </a>
+        </div>
+
+        <!-- About Us -->
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <div class="about-us-section">
+                <div class="about-us-header">
+                    <img src="Images/LogoGreen.png" alt="YPL Logo">
+                    <h4>Young Planet Leaders</h4>
+                </div>
+                <p>
+                    This project helps make Egyptian schools green and beautiful. 
+                    We use empty areas to plant new things because a clean environment 
+                    helps students feel less stressed and get better grades.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © 2024-2025 Young Planet Leaders Egypt. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    /* Hide transition after animation */
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("transition").style.display = "none";
+        }, 4300);
+    });
+
+    /* Smooth scroll-triggered animations */
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', () => {
+        // Observe sections
+        const sections = document.querySelectorAll('.overview-section, .team-section, .dashboard-section');
+        sections.forEach(section => observer.observe(section));
+    });
+
+    /* Smooth scroll for navigation links */
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // ====== USER AUTHENTICATION CHECK ======
+    document.addEventListener('DOMContentLoaded', () => {
+        const authLink = document.getElementById('authLink');
+        const teamName = localStorage.getItem('team');
+        
+        if (teamName && authLink) {
+            // User is logged in - replace login link with user profile
+            const navList = authLink.parentElement.parentElement;
+            const userProfileHTML = `
+                <li>
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-icon">${teamName.charAt(0).toUpperCase()}</div>
+                        <div class="user-text">
+                            <span class="user-greeting">Hi,</span>
+                            <span class="user-name">${teamName}</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="Dashboard.html">Dashboard</a>
+                        <a href="#" class="logout-btn" id="logoutBtn">Logout</a>
+                    </div>
+                </li>
+            `;
+            
+            authLink.parentElement.innerHTML = userProfileHTML;
+            
+            // Toggle dropdown menu
+            const userProfile = document.getElementById('userProfile');
+            const userDropdown = document.getElementById('userDropdown');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            if (userProfile && userDropdown) {
+                userProfile.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    userDropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', () => {
+                    userDropdown.classList.remove('show');
+                });
+            }
+            
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('team');
+                    window.location.reload();
+                });
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

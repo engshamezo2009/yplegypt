@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YPL Dashboard - Young Planet Leaders Egypt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+body {
+    background: linear-gradient(135deg, #0a2818 0%, #0f3d25 50%, #145c3a 100%);
+    min-height: 100vh;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    animation: pageLoad 0.8s ease forwards;
+}
+
+/* ====== PAGE TRANSITIONS & ANIMATIONS ====== */
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Scroll Fade Animation Class */
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====== NAVBAR / HEADER ====== */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px clamp(20px, 5vw, 60px);
+    background: rgba(0, 50, 20, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(168, 230, 207, 0.2);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.6s ease;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    animation: fadeInLeft 0.8s ease 0.2s backwards;
+}
+
+.logo-box .logo-text {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #a8e6cf;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.logo-box .logo-text:hover {
+    color: #6fd4a8;
+    text-shadow: 0 4px 20px rgba(168, 230, 207, 0.6);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(15px, 3vw, 30px);
+    animation: fadeInRight 0.8s ease 0.3s backwards;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(15px, 3vw, 35px);
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    animation: fadeInDown 0.6s ease backwards;
+}
+
+nav ul li:nth-child(1) { animation-delay: 0.4s; }
+nav ul li:nth-child(2) { animation-delay: 0.5s; }
+nav ul li:nth-child(3) { animation-delay: 0.6s; }
+nav ul li:nth-child(4) { animation-delay: 0.7s; }
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: clamp(13px, 2vw, 15px);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #a8e6cf;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #a8e6cf;
+    text-shadow: 0 2px 10px rgba(168, 230, 207, 0.4);
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
+}
+
+#authSection {
+    display: flex;
+    align-items: center;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    background: rgba(168, 230, 207, 0.15);
+    border-radius: 50px;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-section:hover {
+    background: rgba(168, 230, 207, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(168, 230, 207, 0.3);
+}
+
+.user-section .dropdown-icon {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid white;
+    transition: transform 0.3s ease;
+}
+
+.user-section.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: rgba(0, 50, 20, 0.98);
+    backdrop-filter: blur(25px);
+    border-radius: 15px;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    min-width: 180px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.user-section.active .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a,
+.user-dropdown button {
+    width: 100%;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+    background: rgba(168, 230, 207, 0.2);
+    color: #a8e6cf;
+    transform: translateX(5px);
+}
+
+.user-section .user-icon {
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f3d25;
+    font-weight: 600;
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.user-section:hover .user-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.user-section .user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.login-link {
+    padding: 10px 25px;
+    background: rgba(168, 230, 207, 0.2);
+    border: 1px solid rgba(168, 230, 207, 0.4);
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.login-link:hover {
+    background: rgba(168, 230, 207, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(168, 230, 207, 0.3);
+}
+
+/* ====== DASHBOARD HERO ====== */
+.dashboard-hero {
+    width: 100%;
+    padding: 140px clamp(20px, 5vw, 80px) 70px;
+    background: linear-gradient(135deg, rgba(15, 61, 37, 0.9) 0%, rgba(20, 92, 58, 0.85) 100%);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+.dashboard-hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-hero h1 {
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    line-height: 1.15;
+    animation: fadeInUp 1s ease 0.3s backwards;
+}
+
+.dashboard-hero p {
+    font-size: clamp(15px, 3vw, 19px);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 100%;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    animation: fadeInUp 1s ease 0.5s backwards;
+}
+
+/* ====== MAIN DASHBOARD CONTENT ====== */
+.dashboard-content {
+    padding: 50px clamp(20px, 5vw, 80px) 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Top Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: scaleIn 0.6s ease backwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.2s; }
+.stat-card:nth-child(2) { animation-delay: 0.3s; }
+.stat-card:nth-child(3) { animation-delay: 0.4s; }
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #a8e6cf, #6fd4a8);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(168, 230, 207, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.stat-card:hover::after {
+    width: 500px;
+    height: 500px;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(168, 230, 207, 0.4);
+    border-color: rgba(168, 230, 207, 0.6);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-value {
+    font-size: clamp(38px, 6vw, 46px);
+    font-weight: 800;
+    color: #a8e6cf;
+    margin-bottom: 8px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(168, 230, 207, 0.6);
+}
+
+.stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 1024px) {
+    .charts-grid {
+        grid-template-columns: 1fr 1fr 350px;
+    }
+}
+
+.chart-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(168, 230, 207, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.8s ease backwards;
+}
+
+.chart-card:nth-child(1) { animation-delay: 0.3s; }
+.chart-card:nth-child(2) { animation-delay: 0.4s; }
+.chart-card:nth-child(3) { animation-delay: 0.5s; }
+
+.chart-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.chart-card h3 {
+    font-size: clamp(18px, 3.5vw, 21px);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+    transition: color 0.3s ease;
+}
+
+.chart-card:hover h3 {
+    color: #0f3d25;
+}
+
+/* Team Rankings Funnel */
+.funnel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.funnel-stage {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: fadeInLeft 0.8s ease backwards;
+}
+
+.funnel-stage:nth-child(1) { animation-delay: 0.6s; }
+.funnel-stage:nth-child(2) { animation-delay: 0.7s; }
+.funnel-stage:nth-child(3) { animation-delay: 0.8s; }
+
+.funnel-bar {
+    flex: 1;
+    height: 60px;
+    background: linear-gradient(90deg, #4a90e2, #5ba3f5);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.funnel-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.funnel-bar:hover::before {
+    left: 100%;
+}
+
+.funnel-stage:nth-child(1) .funnel-bar {
+    background: linear-gradient(90deg, #FFD700, #FFC500);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    width: 100%;
+}
+
+.funnel-stage:nth-child(2) .funnel-bar {
+    background: linear-gradient(90deg, #C0C0C0, #B8B8B8);
+    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
+    width: 85%;
+}
+
+.funnel-stage:nth-child(3) .funnel-bar {
+    background: linear-gradient(90deg, #CD7F32, #C87533);
+    box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
+    width: 70%;
+}
+
+.funnel-bar:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.funnel-rank {
+    font-size: clamp(22px, 4vw, 26px);
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    margin-right: 20px;
+}
+
+.funnel-bar:hover .funnel-rank {
+    transform: scale(1.15);
+}
+
+.funnel-team {
+    font-size: clamp(14px, 2.5vw, 17px);
+    font-weight: 600;
+    color: white;
+    flex: 1;
+    text-align: left;
+}
+
+.funnel-points {
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.funnel-bar:hover .funnel-points {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}
+
+/* Competition Chart */
+.competition-chart {
+    height: clamp(280px, 40vh, 350px);
+    position: relative;
+}
+
+.chart-canvas {
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.chart-card:hover .chart-canvas {
+    opacity: 0.95;
+}
+
+/* Progress Gauge */
+.progress-gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px 0;
+}
+
+.gauge-container {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    margin-bottom: 20px;
+    animation: scaleIn 1s ease 0.6s backwards;
+}
+
+.gauge-svg {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+.gauge-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 20;
+    transition: stroke 0.3s ease;
+}
+
+.chart-card:hover .gauge-bg {
+    stroke: #d0d0d0;
+}
+
+.gauge-fill {
+    fill: none;
+    stroke: url(#gaugeGradient);
+    stroke-width: 20;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gauge-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+    font-weight: 800;
+    color: #0f3d25;
+    transition: all 0.3s ease;
+}
+
+.chart-card:hover .gauge-text {
+    transform: translate(-50%, -50%) scale(1.1);
+    color: #145c3a;
+}
+
+.gauge-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.chart-card:hover .gauge-label {
+    color: #0f3d25;
+}
+
+/* Team Status Table */
+.team-status-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(168, 230, 207, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 1s ease 0.6s backwards;
+    transition: all 0.4s ease;
+}
+
+.team-status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.team-status-card h3 {
+    font-size: clamp(18px, 3.5vw, 21px);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+}
+
+.team-status-box {
+    background: linear-gradient(135deg, #0f3d25 0%, #145c3a 100%);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(15, 61, 37, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.team-status-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(168, 230, 207, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.team-status-card:hover .team-status-box::before {
+    opacity: 1;
+}
+
+.team-status-card:hover .team-status-box {
+    transform: scale(1.02);
+    box-shadow: 0 12px 35px rgba(15, 61, 37, 0.5);
+}
+
+.team-status-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.team-status-name {
+    font-size: clamp(26px, 5vw, 30px);
+    font-weight: 800;
+    color: #a8e6cf;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.team-status-card:hover .team-status-name {
+    transform: scale(1.05);
+    text-shadow: 0 4px 20px rgba(168, 230, 207, 0.6);
+}
+
+.team-status-rank {
+    display: inline-block;
+    background: rgba(168, 230, 207, 0.2);
+    border: 2px solid #a8e6cf;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #a8e6cf;
+    transition: all 0.3s ease;
+}
+
+.team-status-card:hover .team-status-rank {
+    background: rgba(168, 230, 207, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(168, 230, 207, 0.4);
+}
+
+.team-status-unranked {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* ====== TABLET (481px - 1023px) ====== */
+@media (min-width: 481px) and (max-width: 1023px) {
+    header {
+        padding: 12px 35px;
+    }
+
+    .dashboard-hero {
+        padding: 130px 40px 60px;
+    }
+
+    .dashboard-hero h1 {
+        font-size: 48px;
+    }
+
+    .dashboard-hero p {
+        font-size: 17px;
+    }
+
+    .dashboard-content {
+        padding: 45px 40px 70px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+    }
+}
+
+/* ====== MOBILE (320px - 480px) ====== */
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    header {
+        padding: 12px 18px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo-box .logo-text {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        gap: 12px;
+        flex: 1;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 4px 0;
+    }
+
+    .user-section .user-name {
+        display: none;
+    }
+
+    .user-section {
+        padding: 8px 12px;
+    }
+
+    .dashboard-hero {
+        padding: 100px 20px 50px;
+        background: linear-gradient(135deg, rgba(15, 61, 37, 0.95) 0%, rgba(20, 92, 58, 0.95) 100%);
+    }
+
+    .dashboard-hero h1 {
+        font-size: 34px;
+        margin-bottom: 16px;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+    }
+
+    .dashboard-hero p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .dashboard-content {
+        padding: 35px 18px 60px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 30px;
+    }
+
+    .stat-card {
+        padding: 24px 20px;
+    }
+
+    .stat-card h3 {
+        font-size: 12px;
+    }
+
+    .stat-value {
+        font-size: 36px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 30px;
+    }
+
+    .chart-card {
+        padding: 24px 18px;
+    }
+
+    .chart-card h3 {
+        font-size: 17px;
+        margin-bottom: 16px;
+    }
+
+    .funnel-container {
+        gap: 12px;
+    }
+
+    .funnel-stage {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .funnel-bar {
+        width: 100% !important;
+        height: 70px;
+        padding: 0 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .funnel-rank {
+        font-size: 20px;
+    }
+
+    .funnel-team {
+        font-size: 14px;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .funnel-points {
+        font-size: 15px;
+        padding: 5px 14px;
+    }
+
+    .competition-chart {
+        height: 250px;
+    }
+
+    .gauge-container {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 16px;
+    }
+
+    .gauge-text {
+        font-size: 36px;
+    }
+
+    .gauge-label {
+        font-size: 14px;
+    }
+
+    .team-status-card {
+        padding: 24px 18px;
+    }
+
+    .team-status-card h3 {
+        font-size: 17px;
+        margin-bottom: 16px;
+    }
+
+    .team-status-box {
+        padding: 24px 18px;
+        border-radius: 12px;
+    }
+
+    .team-status-name {
+        font-size: 24px;
+        margin-bottom: 14px;
+    }
+
+    .team-status-rank {
+        font-size: 14px;
+        padding: 8px 22px;
+    }
+
+    .team-status-unranked {
+        font-size: 14px;
+    }
+}
+
+/* ====== EXTRA SMALL (Below 375px) ====== */
+@media (max-width: 374px) {
+    .dashboard-hero h1 {
+        font-size: 30px;
+    }
+
+    .dashboard-hero p {
+        font-size: 14px;
+    }
+
+    .funnel-bar {
+        height: 65px;
+    }
+
+    .funnel-team {
+        font-size: 13px;
+    }
+}
+
+/* ====== DESKTOP (1024px+) ====== */
+@media (min-width: 1024px) {
+    header {
+        padding: 12px 60px;
+    }
+
+    .dashboard-hero {
+        padding: 160px 80px 90px;
+    }
+
+    .dashboard-content {
+        padding: 60px 80px 100px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* ====== SMOOTH SCROLL PARALLAX EFFECTS ====== */
+@media (prefers-reduced-motion: no-preference) {
+    .dashboard-hero {
+        transition: transform 0.1s ease-out;
+    }
+}
+
+/* ====== LOADING ANIMATIONS ====== */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* Additional smooth transitions for page elements */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    body {
+        animation: none;
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ====== HEADER / NAVIGATION ====== -->
+<header>
+    <div class="logo-box">
+        <span class="logo-text">YPL</span>
+    </div>
+
+    <div class="header-right">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            </ul>
+        </nav>
+
+        <div id="authSection">
+            <!-- Will be filled by JavaScript -->
+        </div>
+    </div>
+</header>
+
+<!-- ====== DASHBOARD HERO SECTION ====== -->
+<section class="dashboard-hero">
+    <div class="dashboard-hero-content">
+        <h1>The Dashboard</h1>
+        <p>
+            Welcome to the YPL Dashboard, where you can track team rankings, monitor competition progress, 
+            and view the overall advancement of the Young Planet Leaders program. Here you'll find real-time 
+            updates on team performance, material collection competitions, and our collective journey toward 
+            a greener Egypt.
+        </p>
+    </div>
+</section>
+
+<!-- ====== MAIN DASHBOARD CONTENT ====== -->
+<div class="dashboard-content">
+    
+    <!-- Top Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Teams</h3>
+            <div class="stat-value">20</div>
+            <div class="stat-label">Active Participants</div>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Materials Collected</h3>
+            <div class="stat-value">1.2K</div>
+            <div class="stat-label">g This Month</div>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Ranked Teams</h3>
+            <div class="stat-value">3</div>
+            <div class="stat-label">Top Performers</div>
+        </div>
+    </div>
+
+    <!-- Main Charts Grid -->
+    <div class="charts-grid">
+        
+        <!-- Team Rankings Funnel -->
+        <div class="chart-card">
+            <h3> Team Rankings</h3>
+            <div class="funnel-container">
+                <div class="funnel-stage">
+                    <div class="funnel-bar">
+                        <span class="funnel-rank">#1</span>
+                        <span class="funnel-team">ما في انضف من هيك</span>
+                        <span class="funnel-points">450 pts</span>
+                    </div>
+                </div>
+                
+                <div class="funnel-stage">
+                    <div class="funnel-bar">
+                        <span class="funnel-rank">#2</span>
+                        <span class="funnel-team">Elfalheen nezr3 and ne2l3</span>
+                        <span class="funnel-points">385 pts</span>
+                    </div>
+                </div>
+                
+                <div class="funnel-stage">
+                    <div class="funnel-bar">
+                        <span class="funnel-rank">#3</span>
+                        <span class="funnel-team">Grüne Initiative</span>
+                        <span class="funnel-points">320 pts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competition Chart -->
+        <div class="chart-card">
+            <h3> Material Collection Race (3 Hours)</h3>
+            <div class="competition-chart">
+                <canvas id="competitionChart" class="chart-canvas"></canvas>
+            </div>
+        </div>
+
+        <!-- Progress Gauge -->
+        <div class="chart-card">
+            <h3> Program Progress</h3>
+            <div class="progress-gauge">
+                <div class="gauge-container">
+                    <svg class="gauge-svg" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#eab308;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="gauge-bg" cx="100" cy="100" r="80"></circle>
+                        <circle class="gauge-fill" cx="100" cy="100" r="80" 
+                                stroke-dasharray="502.4" 
+                                stroke-dashoffset="301.44" 
+                                id="gaugeFill"></circle>
+                    </svg>
+                    <div class="gauge-text">40%</div>
+                </div>
+                <div class="gauge-label">Overall Completion</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Status -->
+    <div class="team-status-card">
+        <h3>Your Team Status</h3>
+        <div class="team-status-box" id="teamStatusBox">
+            <div class="team-status-label">Your Team</div>
+            <div class="team-status-name" id="teamName">Not Logged In</div>
+            <div class="team-status-rank" id="teamRank">Please log in to view your ranking</div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script>
+    // Teams database with rankings
+    const teamsDB = {
+        "ما في انضف من هيك": { rank: 1, points: 450 },
+        "Elfalheen nezr3 and ne2l3": { rank: 2, points: 385 },
+        "Grüne Initiative": { rank: 3, points: 320 },
+        "211": { rank: null, points: 0 },
+        "Eco Hands": { rank: null, points: 0 },
+        "علي بركة الله": { rank: null, points: 0 },
+        "Elzawia Elkhadra": { rank: null, points: 0 },
+        "Anahr": { rank: null, points: 0 },
+        "عنتيل المحبه": { rank: null, points: 0 },
+        "Ana free": { rank: null, points: 0 },
+        "pH": { rank: null, points: 0 },
+        "kfrt3eez": { rank: null, points: 0 },
+        "NeXa": { rank: null, points: 0 },
+        "Palms": { rank: null, points: 0 },
+        "Earth gaurds": { rank: null, points: 0 },
+        "Greener": { rank: null, points: 0 },
+        "Nadafa, Re7ah, Tawfeer": { rank: null, points: 0 },
+        "Eco 204": { rank: null, points: 0 },
+        "To be Green": { rank: null, points: 0 },
+        "Source of goodness": { rank: null, points: 0 }
+    };
+
+    // Check login status
+    function checkLoginStatus() {
+        const teamName = localStorage.getItem("team");
+        const authSection = document.getElementById("authSection");
+
+        if (teamName && teamsDB[teamName] !== undefined) {
+            renderUserSection(teamName);
+            updateTeamStatus(teamName);
+        } else {
+            renderLoginLink();
+            showDefaultTeamStatus();
+        }
+    }
+
+    function renderUserSection(teamName) {
+        const authSection = document.getElementById("authSection");
+        const initial = teamName.charAt(0).toUpperCase();
+        
+        authSection.innerHTML = `
+            <div class="user-section" onclick="toggleDropdown(event)">
+                <span class="user-name">Hi, ${teamName}</span>
+                <div class="user-icon">${initial}</div>
+                <div class="dropdown-icon"></div>
+                <div class="user-dropdown">
+                    <a href="Dashboard.html">
+                        <span></span> Dashboard
+                    </a>
+                    <button onclick="logout(event)">
+                        <span></span> Logout
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Toggle dropdown menu
+    function toggleDropdown(event) {
+        event.stopPropagation();
+        const userSection = document.querySelector(".user-section");
+        if (userSection) {
+            userSection.classList.toggle("active");
+        }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+        const userSection = document.querySelector(".user-section");
+        if (userSection && !userSection.contains(event.target)) {
+            userSection.classList.remove("active");
+        }
+    });
+
+    // Logout function
+    function logout(event) {
+        event.stopPropagation();
+        localStorage.removeItem("team");
+        window.location.href = "index.html";
+    }
+
+    function renderLoginLink() {
+        const authSection = document.getElementById("authSection");
+        authSection.innerHTML = `
+            <a href="Login.html" class="login-link">
+                <span></span> Sign In
+            </a>
+        `;
+    }
+
+    function updateTeamStatus(teamName) {
+        const teamData = teamsDB[teamName];
+        document.getElementById("teamName").textContent = teamName;
+        
+        const rankElement = document.getElementById("teamRank");
+        if (teamData.rank) {
+            rankElement.innerHTML = `Rank: <strong>#${teamData.rank}</strong> • ${teamData.points} Points`;
+            rankElement.className = "team-status-rank";
+        } else {
+            rankElement.textContent = "Status: Unranked";
+            rankElement.className = "team-status-unranked";
+        }
+    }
+
+    function showDefaultTeamStatus() {
+        document.getElementById("teamName").textContent = "Not Logged In";
+        const rankElement = document.getElementById("teamRank");
+        rankElement.textContent = "Please log in to view your ranking";
+        rankElement.className = "team-status-unranked";
+    }
+
+    // Competition Chart
+    const ctx = document.getElementById('competitionChart').getContext('2d');
+    const competitionChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['0:00', '0:30', '1:00', '1:30', '2:00', '2:30', '3:00'],
+            datasets: [
+                {
+                    label: 'ما في انضف من هيك',
+                    data: [0, 25, 48, 72, 85, 105, 120],
+                    borderColor: '#FFD700',
+                    backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                    borderWidth: 4,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                },
+                {
+                    label: 'Elfalheen nezr3 and ne2l3',
+                    data: [0, 20, 42, 58, 75, 88, 95],
+                    borderColor: '#C0C0C0',
+                    backgroundColor: 'rgba(192, 192, 192, 0.1)',
+                    borderWidth: 4,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                },
+                {
+                    label: 'Grüne Initiative',
+                    data: [0, 18, 35, 50, 62, 72, 80],
+                    borderColor: '#CD7F32',
+                    backgroundColor: 'rgba(205, 127, 50, 0.1)',
+                    borderWidth: 4,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 13,
+                            weight: 600
+                        },
+                        padding: 15,
+                        usePointStyle: true
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 13
+                    },
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.parsed.y + 'g';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Materials (g)',
+                        font: {
+                            size: 14,
+                            weight: 600
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time (Hours)',
+                        font: {
+                            size: 14,
+                            weight: 600
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    });
+
+    // Animate gauge on load
+    window.addEventListener('load', () => {
+        checkLoginStatus();
+        
+        setTimeout(() => {
+            const gaugeFill = document.getElementById('gaugeFill');
+            const circumference = 2 * Math.PI * 80;
+            const progress = 40;
+            const offset = circumference - (progress / 100) * circumference;
+            gaugeFill.style.strokeDashoffset = offset;
+        }, 500);
+    });
+
+    // Smooth scroll with fade animation
+    let scrollTimeout;
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            isScrolling = true;
+            document.querySelectorAll('section, .dashboard-content').forEach(el => {
+                el.classList.add('fade-out');
+            });
+        }
+
+        clearTimeout(scrollTimeout);
+        
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+            document.querySelectorAll('section, .dashboard-content').forEach(el => {
+                el.classList.remove('fade-out');
+            });
+        }, 150);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

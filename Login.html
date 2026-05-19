@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login - Young Planet Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: linear-gradient(135deg, #0a2818 0%, #0f3d25 50%, #145c3a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(15px, 5vw, 20px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background particles */
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(168, 230, 207, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: backgroundScroll 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes backgroundScroll {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Login Container */
+.login-container {
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(20px);
+    border-radius: clamp(20px, 4vw, 30px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    padding: clamp(30px, 6vw, 60px) clamp(25px, 5vw, 50px);
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Section */
+.login-logo {
+    text-align: center;
+    margin-bottom: clamp(25px, 5vw, 40px);
+}
+
+.login-logo img {
+    width: clamp(70px, 15vw, 100px);
+    height: clamp(70px, 15vw, 100px);
+    object-fit: contain;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.login-logo h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 700;
+    color: #0f3d25;
+    margin-bottom: clamp(8px, 2vw, 10px);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.login-logo p {
+    font-size: clamp(13px, 2.5vw, 16px);
+    color: #7a7a7a;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 4vw, 25px);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.5vw, 10px);
+}
+
+.form-group label {
+    font-size: clamp(13px, 2.2vw, 15px);
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: 0.3px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: clamp(12px, 2.5vw, 16px) clamp(15px, 3vw, 20px);
+    border: 2px solid #e0e0e0;
+    border-radius: clamp(12px, 2vw, 15px);
+    font-size: clamp(14px, 2.2vw, 15px);
+    transition: all 0.3s ease;
+    background: white;
+    color: #1a1a1a;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0f3d25;
+    box-shadow: 0 0 0 clamp(2px, 0.5vw, 4px) rgba(15, 61, 37, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #b0b0b0;
+}
+
+/* Error message */
+.error-message {
+    color: #d32f2f;
+    font-size: clamp(12px, 2vw, 14px);
+    margin-top: clamp(4px, 1vw, 5px);
+    display: none;
+    animation: shake 0.4s ease;
+}
+
+.error-message.show {
+    display: block;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Success message */
+.success-message {
+    color: #0f3d25;
+    font-size: clamp(13px, 2.2vw, 14px);
+    text-align: center;
+    padding: clamp(10px, 2vw, 12px);
+    background: rgba(168, 230, 207, 0.2);
+    border-radius: clamp(8px, 1.5vw, 10px);
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.success-message.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: clamp(14px, 2.5vw, 18px) clamp(20px, 4vw, 30px);
+    background: #0f3d25;
+    color: white;
+    border: none;
+    border-radius: clamp(12px, 2vw, 15px);
+    font-size: clamp(14px, 2.2vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    margin-top: clamp(8px, 2vw, 10px);
+    position: relative;
+    overflow: hidden;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.submit-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.submit-btn:hover {
+    background: #0a2818;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(15, 61, 37, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: #b0b0b0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Loading spinner */
+.spinner {
+    display: none;
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+.submit-btn.loading .spinner {
+    display: block;
+}
+
+.submit-btn.loading span {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Back to home link */
+.back-link {
+    text-align: center;
+    margin-top: clamp(18px, 4vw, 25px);
+}
+
+.back-link a {
+    color: #0f3d25;
+    text-decoration: none;
+    font-size: clamp(13px, 2.2vw, 15px);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(6px, 1.5vw, 8px);
+}
+
+.back-link a:hover {
+    color: #145c3a;
+    gap: clamp(10px, 2vw, 12px);
+}
+
+/* ====== TABLET OPTIMIZATION (768px - 1023px) ====== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .login-container {
+        max-width: 450px;
+        padding: clamp(40px, 5vw, 55px);
+    }
+
+    .login-logo img {
+        width: clamp(75px, 12vw, 95px);
+        height: clamp(75px, 12vw, 95px);
+    }
+
+    .login-logo h1 {
+        font-size: clamp(26px, 4.5vw, 30px);
+    }
+
+    .login-logo p {
+        font-size: clamp(14px, 2.2vw, 15px);
+    }
+
+    .form-group input {
+        padding: clamp(13px, 2.2vw, 15px) clamp(16px, 2.8vw, 19px);
+    }
+
+    .submit-btn {
+        padding: clamp(15px, 2.2vw, 17px) clamp(22px, 3.8vw, 28px);
+        min-height: 46px;
+    }
+}
+
+/* ====== LARGE DESKTOP (1024px+) ====== */
+@media (min-width: 1024px) {
+    .login-container {
+        padding: 60px 50px;
+        max-width: 480px;
+    }
+
+    .login-logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .login-logo h1 {
+        font-size: 32px;
+    }
+
+    .login-logo p {
+        font-size: 16px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+    }
+
+    .form-group input {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .submit-btn {
+        padding: 18px 30px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+
+    .back-link a {
+        font-size: 15px;
+    }
+}
+
+/* ====== SMALL MOBILE (320px - 480px) ====== */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        padding: clamp(12px, 4vw, 15px);
+        min-height: 100vh;
+    }
+
+    .login-container {
+        padding: clamp(28px, 5vw, 35px) clamp(20px, 4vw, 25px);
+        border-radius: clamp(18px, 4vw, 24px);
+        max-width: 95vw;
+    }
+
+    .login-logo {
+        margin-bottom: clamp(20px, 4vw, 30px);
+    }
+
+    .login-logo img {
+        width: clamp(60px, 13vw, 80px);
+        height: clamp(60px, 13vw, 80px);
+        margin-bottom: clamp(12px, 2.5vw, 16px);
+    }
+
+    .login-logo h1 {
+        font-size: clamp(22px, 4.5vw, 26px);
+        margin-bottom: clamp(6px, 1.5vw, 8px);
+    }
+
+    .login-logo p {
+        font-size: clamp(12px, 2.2vw, 14px);
+    }
+
+    .login-form {
+        gap: clamp(16px, 3.5vw, 20px);
+    }
+
+    .form-group {
+        gap: clamp(7px, 1.2vw, 9px);
+    }
+
+    .form-group label {
+        font-size: clamp(12px, 2vw, 14px);
+    }
+
+    .form-group input {
+        padding: clamp(11px, 2vw, 14px) clamp(13px, 2.5vw, 16px);
+        border-radius: clamp(10px, 1.8vw, 13px);
+        font-size: clamp(13px, 2vw, 14px);
+    }
+
+    .form-group input:focus {
+        box-shadow: 0 0 0 clamp(1.5px, 0.4vw, 3px) rgba(15, 61, 37, 0.1);
+    }
+
+    .error-message {
+        font-size: clamp(11px, 1.8vw, 12px);
+    }
+
+    .success-message {
+        font-size: clamp(12px, 2vw, 13px);
+        padding: clamp(9px, 1.5vw, 11px);
+        border-radius: clamp(7px, 1.2vw, 9px);
+    }
+
+    .submit-btn {
+        padding: clamp(12px, 2vw, 15px) clamp(18px, 3.5vw, 22px);
+        border-radius: clamp(10px, 1.8vw, 13px);
+        font-size: clamp(13px, 2vw, 14px);
+        margin-top: clamp(6px, 1.5vw, 8px);
+        min-height: 42px;
+    }
+
+    .spinner {
+        width: clamp(14px, 2.5vw, 18px);
+        height: clamp(14px, 2.5vw, 18px);
+    }
+
+    .back-link {
+        margin-top: clamp(16px, 3.5vw, 20px);
+    }
+
+    .back-link a {
+        font-size: clamp(12px, 2vw, 13px);
+        gap: clamp(5px, 1.2vw, 7px);
+    }
+
+    .back-link a:hover {
+        gap: clamp(8px, 1.5vw, 10px);
+    }
+}
+
+/* ====== EXTRA SMALL MOBILE (Below 320px) ====== */
+@media (max-width: 320px) {
+    html {
+        font-size: 13px;
+    }
+
+    .login-container {
+        padding: clamp(24px, 4.5vw, 30px) clamp(16px, 3.5vw, 20px);
+    }
+
+    .login-logo img {
+        width: clamp(55px, 12vw, 70px);
+        height: clamp(55px, 12vw, 70px);
+    }
+
+    .login-logo h1 {
+        font-size: clamp(20px, 4vw, 24px);
+    }
+
+    .login-logo p {
+        font-size: clamp(11px, 1.8vw, 12px);
+    }
+
+    .form-group input {
+        padding: clamp(10px, 1.8vw, 12px) clamp(12px, 2.2vw, 14px);
+    }
+
+    .submit-btn {
+        padding: clamp(11px, 1.8vw, 13px) clamp(16px, 3vw, 20px);
+        min-height: 40px;
+    }
+}
+
+/* ====== LANDSCAPE MODE OPTIMIZATION ====== */
+@media (max-height: 600px) and (orientation: landscape) {
+    .login-container {
+        padding: clamp(20px, 3vw, 40px) clamp(25px, 5vw, 50px);
+    }
+
+    .login-logo {
+        margin-bottom: clamp(15px, 3vw, 25px);
+    }
+
+    .login-logo img {
+        width: clamp(60px, 10vh, 80px);
+        height: clamp(60px, 10vh, 80px);
+        margin-bottom: clamp(10px, 2vh, 15px);
+    }
+
+    .login-logo h1 {
+        font-size: clamp(20px, 3.5vh, 26px);
+    }
+
+    .login-form {
+        gap: clamp(14px, 2.5vh, 18px);
+    }
+
+    .submit-btn {
+        min-height: 40px;
+        margin-top: clamp(5px, 1vh, 8px);
+    }
+}
+
+/* ====== TABLET LANDSCAPE (1024px width, small height) ====== */
+@media (min-width: 768px) and (max-height: 600px) {
+    .login-container {
+        padding: clamp(25px, 3vw, 40px);
+    }
+
+    .login-logo {
+        margin-bottom: clamp(15px, 2.5vw, 20px);
+    }
+
+    .login-form {
+        gap: clamp(12px, 2vw, 16px);
+    }
+}
+</style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="Images/LogoWhite.png" alt="YPL Logo">
+            <h1>Welcome Back</h1>
+            <p>Sign in to access your dashboard</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="teamName">Team Name</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="teamName" 
+                        name="teamName" 
+                        placeholder="Enter your team name"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+                <span class="error-message" id="errorMessage">Invalid team name. Please try again.</span>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Login successful! Redirecting...
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>Login</span>
+                <div class="spinner"></div>
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">
+                <span>←</span> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Teams database - exact team names that are allowed to login
+        const teamsDB = [
+            "Grüne Initiative",
+            "Elfalheen nezr3 and ne2l3",
+            "211",
+            "Eco Hands",
+            "علي بركة الله",
+            "Elzawia Elkhadra",
+            "Anahr",
+            "عنتيل المحبه",
+            "Ana free",
+            "pH",
+            "kfrt3eez",
+            "NeXa",
+            "Palms",
+            "Earth gaurds",
+            "ما في انضف من هيك",
+            "Greener",
+            "Nadafa, Re7ah, Tawfeer",
+            "Eco 204",
+            "To be Green",
+            "Source of goodness"
+        ];
+
+        // Form submission handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const teamNameInput = document.getElementById('teamName');
+            const teamName = teamNameInput.value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = document.querySelector('.submit-btn');
+
+            // Hide previous messages
+            errorMessage.classList.remove('show');
+            successMessage.classList.remove('show');
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Simulate a brief delay for better UX
+            setTimeout(() => {
+                // Check if team name exists in database
+                if (teamsDB.includes(teamName)) {
+                    // Valid team - store in localStorage
+                    localStorage.setItem('team', teamName);
+                    
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Redirect to index.html after 1 second
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    // Invalid team - show error
+                    errorMessage.classList.add('show');
+                    teamNameInput.style.borderColor = '#d32f2f';
+                    
+                    // Remove loading state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    
+                    // Reset border color after animation
+                    setTimeout(() => {
+                        teamNameInput.style.borderColor = '#e0e0e0';
+                    }, 2000);
+                }
+            }, 800);
+        });
+
+        // Clear error message on input
+        document.getElementById('teamName').addEventListener('input', function() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.classList.remove('show');
+            this.style.borderColor = '#e0e0e0';
+        });
+
+        // Auto-focus on team name input
+        window.addEventListener('load', () => {
+            document.getElementById('teamName').focus();
+        });
+    </script>
+</body>
+</html>
