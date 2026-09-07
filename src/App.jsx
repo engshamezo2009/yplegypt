@@ -1,14 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Wraper from "./wraper";
 import HomePage from "./pages/homepage";
-
+import "./styles/index.css";
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Wraper />}>
-          <Route index element={<Navigate to="/homepage" />} />
+          <Route index element={<Navigate to="/about-us" />} />
           <Route path="homepage" element={<HomePage />} />
+          <Route path="about-us" element={<HomePage />} />
+          <Route path="dashboard" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

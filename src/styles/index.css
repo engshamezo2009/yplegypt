@@ -1,0 +1,171 @@
+:root {
+  /* =========================
+     Colors
+  ========================= */
+
+  /* Brand */
+  --color-primary: #0f3d25;
+  --color-primary-dark: #0a2818;
+  --color-primary-light: #145c3a;
+
+  /* Accent */
+  --color-accent: #a8e6cf;
+  --color-accent-light: #d4f1e3;
+
+  /* Backgrounds */
+  --color-bg-dark: #0a2818;
+  --color-bg-light: #e8f5ef;
+  --color-bg-white: #ffffff;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-dark: #1a1a1a;
+  --color-text-secondary: #7a7a7a;
+
+  /* Borders */
+  --color-border: rgba(168, 230, 207, 0.2);
+
+  /* =========================
+     Transparency
+  ========================= */
+
+  --opacity-white-high: rgba(255, 255, 255, 0.95);
+  --opacity-white-medium: rgba(255, 255, 255, 0.8);
+  --opacity-white-low: rgba(255, 255, 255, 0.7);
+
+  --opacity-primary: rgba(0, 50, 20, 0.75);
+  --opacity-overlay: rgba(0, 0, 0, 0.5);
+
+  --opacity-accent-low: rgba(168, 230, 207, 0.15);
+  --opacity-accent-medium: rgba(168, 230, 207, 0.25);
+
+  /* =========================
+     Gradients
+  ========================= */
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    #0a2818 0%,
+    #0f3d25 50%,
+    #145c3a 100%
+  );
+
+  --gradient-accent: linear-gradient(90deg, #a8e6cf, transparent);
+
+  /* =========================
+     Typography
+  ========================= */
+
+  --font-family-base:
+    "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --font-size-base: 16px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* =========================
+     Spacing
+  ========================= */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* =========================
+     Border Radius
+  ========================= */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
+  --radius-2xl: 25px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
+
+  /* =========================
+     Shadows
+  ========================= */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  --shadow-header: 0 2px 15px rgba(0, 0, 0, 0.2);
+
+  /* =========================
+     Transitions
+  ========================= */
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+  --transition-animation: 1.2s ease-out;
+
+  /* =========================
+     Layout
+  ========================= */
+
+  --container-max-width: 1400px;
+
+  /* =========================
+     Z-Index
+  ========================= */
+
+  --z-header: 100;
+  --z-overlay: 1000;
+  --z-content: 2;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family-base);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: var(--font-size-base);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  color: var(--color-text-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 230, 207, 0.6);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 230, 207, 0.9);
+}
