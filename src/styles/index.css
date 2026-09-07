@@ -148,7 +148,11 @@ body {
   overflow-y: auto;
 
   color: var(--color-text-primary);
-
+  background-image: url("/Images/blablabla.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -5,7 +5,7 @@
 footer {
   position: relative;
 
-  margin-top: var(--space-20);
+  /* margin-top: var(--space-20); */
 
   background: linear-gradient(
     145deg,

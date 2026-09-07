@@ -3,15 +3,14 @@
    ========================================================= */
 
 header {
-  position: sticky;
-  top: 18px;
+  /* top: px; */
 
   z-index: var(--z-header);
 
   width: min(94%, 1250px);
   height: 72px;
 
-  margin: 18px auto 0;
+  margin: 18px auto 20px;
 
   display: flex;
   align-items: center;
