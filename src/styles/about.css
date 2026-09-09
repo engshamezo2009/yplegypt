@@ -1,3 +1,497 @@
+/* =========================================================
+   TEAM 2026 — FRESH / NATURE / GROWTH
+   ========================================================= */
+
+/* =========================================================
+   TEAM 2026 — DEEP GREEN / NATURE
+   ========================================================= */
+
+.team-2026 {
+  position: relative;
+  width: 100%;
+  padding: 35px 0 120px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      color-mix(in srgb, var(--color-accent) 14%, transparent),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      color-mix(in srgb, var(--color-primary-light) 35%, transparent),
+      transparent 32%
+    ),
+    var(--color-primary-dark) !important;
+}
+
+/* =========================================================
+   ORGANIC DECORATION — TOP LEFT
+   ========================================================= */
+
+.team-2026::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -230px;
+  left: -170px;
+
+  border-radius: 50%;
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+
+  box-shadow:
+    0 0 0 45px color-mix(in srgb, var(--color-accent) 5%, transparent),
+    0 0 0 90px color-mix(in srgb, var(--color-accent) 3%, transparent);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ORGANIC DECORATION — BOTTOM RIGHT
+   ========================================================= */
+
+.team-2026::after {
+  content: "";
+
+  position: absolute;
+
+  width: 480px;
+  height: 480px;
+
+  right: -250px;
+  bottom: -250px;
+
+  border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+
+  background: color-mix(in srgb, var(--color-primary-light) 22%, transparent);
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 8%, transparent);
+
+  transform: rotate(25deg);
+
+  pointer-events: none;
+}
+/* =========================================================
+   YEAR BADGE
+   ========================================================= */
+
+.team-2026 .year-badge {
+  position: relative;
+  z-index: 3;
+
+  width: fit-content;
+
+  margin: -35px auto 65px;
+
+  padding: 11px 30px;
+
+  color: var(--color-bg-white);
+
+  background: var(--color-primary);
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  border-radius: var(--radius-full);
+
+  border: 4px solid var(--color-bg-light);
+
+  box-shadow: 0 10px 25px
+    color-mix(in srgb, var(--color-primary) 18%, transparent);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-2026 .year-badge:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 15px 30px
+    color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+
+/* =========================================================
+   TEAM GRID
+   ========================================================= */
+
+.team-2026 .team-grid {
+  position: relative;
+  z-index: 2;
+
+  width: min(1200px, 90%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 34px 28px;
+}
+
+/* =========================================================
+   TEAM CARD
+   ========================================================= */
+
+.team-2026 .team-card {
+  position: relative;
+
+  height: 410px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background: var(--color-bg-white);
+
+  border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+
+  box-shadow: 0 12px 30px
+    color-mix(in srgb, var(--color-primary) 12%, transparent);
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation: team2026FadeIn 0.8s ease forwards;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes team2026FadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-2026 .team-card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.team-2026 .team-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.team-2026 .team-card:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+.team-2026 .team-card:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.team-2026 .team-card:nth-child(5) {
+  animation-delay: 0.55s;
+}
+
+.team-2026 .team-card:nth-child(6) {
+  animation-delay: 0.65s;
+}
+
+.team-2026 .team-card:nth-child(7) {
+  animation-delay: 0.75s;
+}
+
+.team-2026 .team-card:nth-child(8) {
+  animation-delay: 0.85s;
+}
+
+.team-2026 .team-card:nth-child(9) {
+  animation-delay: 0.95s;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.team-2026 .team-card-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.5s ease;
+}
+
+.team-2026 .team-card:hover .team-card-image {
+  transform: scale(1.07);
+
+  filter: saturate(1.08) brightness(0.94);
+}
+
+/* =========================================================
+   GREEN IMAGE OVERLAY
+   ========================================================= */
+
+.team-2026 .team-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+
+    color-mix(in srgb, var(--color-primary) 88%, transparent) 0%,
+
+    color-mix(in srgb, var(--color-primary) 55%, transparent) 38%,
+
+    transparent 72%
+  );
+
+  pointer-events: none;
+
+  transition: background 0.5s ease;
+}
+
+.team-2026 .team-card:hover::after {
+  background: linear-gradient(
+    to top,
+
+    color-mix(in srgb, var(--color-primary) 92%, transparent) 0%,
+
+    color-mix(in srgb, var(--color-primary-light) 58%, transparent) 45%,
+
+    transparent 75%
+  );
+}
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.team-2026 .team-card-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 2;
+
+  padding: 28px 25px 24px;
+
+  transform: translateY(28px);
+
+  transition: transform 0.45s ease;
+}
+
+.team-2026 .team-card:hover .team-card-overlay {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ACCENT LINE
+   ========================================================= */
+
+.team-2026 .team-card-overlay::before {
+  content: "";
+
+  display: block;
+
+  width: 32px;
+  height: 3px;
+
+  margin-bottom: 13px;
+
+  border-radius: var(--radius-full);
+
+  background: var(--color-accent);
+
+  transition: width 0.4s ease;
+}
+
+.team-2026 .team-card:hover .team-card-overlay::before {
+  width: 55px;
+}
+
+/* =========================================================
+   NAME
+   ========================================================= */
+
+.team-2026 .team-card-name {
+  margin: 0 0 6px;
+
+  color: var(--color-bg-white);
+
+  font-size: clamp(19px, 2vw, 24px);
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   POSITION
+   ========================================================= */
+
+.team-2026 .team-card-position {
+  margin: 0;
+
+  color: var(--color-accent);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+}
+
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.team-2026 .team-card-socials {
+  display: flex;
+
+  gap: 9px;
+
+  margin-top: 17px;
+
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.team-2026 .team-card:hover .team-card-socials {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   SOCIAL BUTTON
+   ========================================================= */
+
+.team-2026 .social-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--color-bg-white) 75%, transparent);
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.team-2026 .social-icon:hover {
+  transform: translateY(-4px);
+
+  background: var(--color-accent);
+
+  border-color: var(--color-accent);
+}
+
+.team-2026 .social-icon svg {
+  width: 16px;
+  height: 16px;
+
+  fill: var(--color-primary);
+
+  transition: fill 0.3s ease;
+}
+
+.team-2026 .social-icon:hover svg {
+  fill: var(--color-primary-dark);
+}
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.team-2026 .team-card:hover {
+  transform: translateY(-9px);
+
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+
+  box-shadow: 0 22px 45px
+    color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .team-2026 .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 28px 22px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .team-2026 {
+    padding-bottom: 80px;
+  }
+
+  .team-2026 .team-grid {
+    width: 88%;
+
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .team-2026 .team-card {
+    height: 390px;
+  }
+
+  .team-2026 .team-card-overlay {
+    transform: translateY(0);
+  }
+
+  .team-2026 .team-card-socials {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ====== SDG GOALS SECTION ====== */
 .sdg-section {
   opacity: 0;
@@ -208,7 +702,176 @@
     display: none;
   }
 }
+/* ===== TEAM HEADER ===== */
+
+.team-header {
+  position: relative;
+  isolation: isolate;
+
+  width: min(1200px, 94%);
+  min-height: 260px;
+
+  margin: 70px auto;
+
+  padding: 55px 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      color-mix(in srgb, var(--color-accent) 35%, transparent),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      color-mix(in srgb, var(--color-accent-light) 60%, transparent),
+      transparent 30%
+    ),
+    var(--color-bg-white);
+
+  border: 1px solid color-mix(in srgb, var(--color-primary) 8%, transparent);
+
+  border-radius: 45px;
+
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px
+    color-mix(in srgb, var(--color-primary-dark) 10%, transparent);
+}
+
+/* ===== Decorative shape ===== */
+
+.team-header::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 260px;
+  height: 260px;
+
+  top: -150px;
+  left: -80px;
+
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+/* ===== Decorative leaf ===== */
+
+.team-header::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 260px;
+  height: 130px;
+
+  right: -80px;
+  bottom: -60px;
+
+  border: 2px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+
+  border-radius: 100% 0 100% 0;
+
+  transform: rotate(-20deg);
+}
+
+/* ===== Small label ===== */
+
+.team-label {
+  margin-bottom: 16px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: var(--color-primary-light);
+}
+
+/* ===== Title ===== */
+
+.team-header h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 6vw, 70px);
+  font-weight: 800;
+  line-height: 1;
+
+  letter-spacing: -2.5px;
+
+  color: var(--color-primary);
+}
+
+/* ===== Accent line ===== */
+
+.team-header-line {
+  width: 70px;
+  height: 4px;
+
+  margin-top: 24px;
+
+  border-radius: var(--radius-full);
+
+  background: var(--color-primary-light);
+
+  box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 600px) {
+  .team-header {
+    min-height: 220px;
+
+    margin: 50px auto;
+
+    padding: 45px 25px;
+
+    border-radius: 32px;
+  }
+
+  .team-header h2 {
+    letter-spacing: -1.5px;
+  }
+}
 /* ====== MEET OUR TEAM SECTION ====== */
+.year-badge {
+  width: fit-content;
+
+  margin: -35px auto 45px;
+  padding: 10px 24px;
+
+  position: relative;
+  z-index: 3;
+
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  color: var(--color-bg-white);
+  background: var(--color-primary);
+
+  border: 5px solid var(--color-bg-light);
+  border-radius: var(--radius-full);
+
+  box-shadow: 0 8px 20px
+    color-mix(in srgb, var(--color-primary-dark) 15%, transparent);
+
+  transition: transform var(--transition-fast);
+}
+
+.year-badge:hover {
+  transform: translateY(-3px);
+}
 @keyframes fadeInSection {
   from {
     opacity: 0;
@@ -225,41 +888,6 @@
   background: #0a0f0d;
   position: relative;
 }
-
-.team-header {
-  margin-bottom: clamp(40px, 8vw, 60px);
-  opacity: 0;
-  animation: fadeInSection 1s ease-out forwards;
-  animation-delay: 0.5s;
-}
-
-.team-header h2 {
-  font-size: clamp(28px, 6vw, 48px);
-  font-weight: 700;
-  color: #56c596;
-  letter-spacing: clamp(0.5px, 1vw, 1px);
-  margin-bottom: clamp(15px, 3vw, 20px);
-  line-height: 1.2;
-}
-
-.year-badge {
-  display: inline-block;
-  padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px);
-  background: transparent;
-  border: 2px solid #56c596;
-  color: #56c596;
-  font-size: clamp(14px, 2.5vw, 18px);
-  font-weight: 600;
-  border-radius: 50px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.year-badge:hover {
-  background: rgba(86, 197, 150, 0.1);
-  transform: translateY(-2px);
-}
-
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

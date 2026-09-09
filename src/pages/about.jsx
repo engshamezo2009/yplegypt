@@ -1,5 +1,177 @@
 import "../styles/about.css";
+import TeamCard from "../components/about/team-card.jsx";
 export default function About() {
+  const team2025 = [
+    {
+      name: "AbdelAziz Gamal",
+      position: "President & Founder",
+      image: "/Images/Aziz.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Ammar Hesham",
+      position: "Vice President",
+      image: "/Images/Ammar.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Mohamed Elshamy",
+      position: "IT & Web Officer",
+      image: "/Images/Shamy.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Yousef Ahmed",
+      position: "Outreach Director",
+      image: "/Images/Alex.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Yousef Alaa",
+      position: "Green Projects Coordinator",
+      image: "/Images/Octa.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Ahmed Moghni",
+      position: "Green Projects Coordinator",
+      image: "/Images/Moghni.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Sami Swelam",
+      position: "Green Projects Coordinator",
+      image: "/Images/Sami.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Asser Sameh",
+      position: "Design Lead",
+      image: "/Images/Asser.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+    {
+      name: "Adham Wahdan",
+      position: "Co-Design Lead",
+      image: "/Images/Adham.png",
+      socials: {
+        instagram: "https://instagram.com/...",
+        email: "mailto:...",
+        phone: "tel:+201234567890",
+      },
+    },
+  ];
+  const team2026 = [
+    {
+      name: "placeholder",
+      position: "President & Founder",
+      image: "/Images/board-2026/1 Eyad.jpg",
+      socials: {
+        instagram: "placeholder",
+        email: "placeholder",
+        phone: "placeholder",
+      },
+    },
+    {
+      name: "Yusuf Wael",
+      position: "Vice President",
+      image: "/Images/board-2026/2 Yusuf.jpg",
+      socials: {
+        instagram: "https://www.instagram.com/yusufwael2010/",
+        email: "mailto:yusufwael2010@gmail.com",
+        phone: "tel:+201060130507",
+      },
+    },
+    {
+      name: "Mazen Fathy",
+      position: "IT & Web Officer",
+      image: "/Images/board-2026/5 Mazen.jpg",
+      socials: {
+        instagram: "https://www.instagram.com/_m_a_z_e_n_2008_/",
+        email: "mailto:mazenfathy841@gmail.com",
+        phone: "tel:+201157083176",
+      },
+    },
+    {
+      name: "Ahmed Ramadan",
+      position: "Outreach Director",
+      image: "/Images/board-2026/6 Ahmed.jpg",
+      socials: {
+        instagram: "https://www.instagram.com/ahmednramadan/",
+        email: "mailto:ahmedramadanlelsayed@outlook.com",
+        phone: "tel:+201030654908",
+      },
+    },
+    {
+      name: "Philopater Hany",
+      position: "Green Projects Coordinator",
+      image: "/Images/board-2026/4 Philopater.jpg",
+      socials: {
+        instagram:
+          "https://www.instagram.com/philopater.hany1?stkn=MWc0dW9manlieWZxcw==",
+        email: "mailto:felooisthebest1@gmail.com",
+        phone: "tel:+201153122063",
+      },
+    },
+    {
+      name: "Youssef Abdelhakim",
+      position: "Green Projects Coordinator",
+      image: "/Images/board-2026/3 Yousef.jpg",
+      socials: {
+        instagram: "https://www.instagram.com/y.safwat_/",
+        email: "mailto:yousef.mohamed.safwat1015@gmail.com",
+        phone: "tel:+201033975285",
+      },
+    },
+    {
+      name: "Abdallah Elkhouly",
+      position: "Design Lead",
+      image: "/Images/board-2026/7 Abdallah.jpg",
+      socials: {
+        instagram: "https://www.instagram.com/abdallah_elkholy177/",
+        email: "mailto:abdallah.elkhouly177@gmail.com",
+        phone: "tel:+201069531155",
+      },
+    },
+  ];
+  const team2025Components = team2025.map((member) => (
+    <TeamCard key={member.name} member={member} />
+  ));
+  const team2026Components = team2026.map((member) => (
+    <TeamCard key={member.name} member={member} />
+  ));
   return (
     <>
       <section className="sdg-section">
@@ -18,309 +190,16 @@ export default function About() {
       </section>
       <div className="team-header">
         <h2>Meet our Team</h2>
-        <span className="year-badge">2025</span>
       </div>
+
+      <section className="team-section team-2026">
+        <div className="year-badge">2026</div>
+        <div className="team-grid"> {team2026Components}</div>
+      </section>
+
       <section className="team-section">
-        <div className="team-grid">
-          <div className="team-card">
-            <img
-              src="Images/Aziz.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">AbdelAziz Gamal</h3>
-              <p className="team-card-position">President & Founder</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/aziz_gamal_502?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="Azizgamal.502@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Team Member 2 */}
-
-          <div className="team-card">
-            <img
-              src="Images/Ammar.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Ammar Hesham</h3>
-              <p className="team-card-position">Vice President</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/_ammar._.hesham_?igsh=M2J4N2owY2MybHls&utm_source=qr"
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="ammarheshamhassan@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          {/* Team Member 3 */}
-
-          <div className="team-card">
-            <img
-              src="Images/Shamy.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Mohamed Elshamy</h3>
-              <p className="team-card-position">IT & Web Officer</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/shamezo.shm?igsh=MTk2N3RiZTRmMHNxbg=="
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="engshamezo@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="team-card">
-            <img
-              src="Images/Alex.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Yousef Ahmed</h3>
-              <p className="team-card-position">Outreach Director</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/yossefalex_?igsh=YmhzZTN5NGJ2MjI0"
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-3.584-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" />
-                  </svg>
-                </a>
-
-                <a href="yossefahmed.alex@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="team-card">
-            <img
-              src="Images/Octa.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Yousef Alaa</h3>
-              <p className="team-card-position">Green Projects Coordinator</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/youssef.octa23?igsh=bTlrNGcweHk1OHR2"
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-3.584-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="eman.alaa6040@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="team-card">
-            <img
-              src="Images/Moghni.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Ahmed Moghni</h3>
-              <p className="team-card-position">Green Projects Coordinator</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/ahmedemad168b?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="mailto:email@example.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="team-card">
-            <img
-              src="Images/Sami.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Sami Swelam</h3>
-              <p className="team-card-position">Green Projects Coordinator</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/samy_0__0?igsh=MWZuZm40bnhkeGliZA=="
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="samytonygo@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="team-card">
-            <img
-              src="Images/Asser.png"
-              alt="Team Member"
-              className="team-card-image"
-            />
-
-            <div className="team-card-overlay">
-              <h3 className="team-card-name">Asser Sameh</h3>
-              <p className="team-card-position">Design Lead</p>
-
-              <div className="team-card-socials">
-                <a
-                  href="https://www.instagram.com/asser.mp3?igsh=NGI5dXZjMHVpdzBl"
-                  target="_blank"
-                  className="social-icon"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791-4-4-4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                <a href="asserelsergany@gmail.com" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />{" "}
-                  </svg>
-                </a>
-
-                <a href="tel:+201234567890" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="year-badge">2025</div>
+        <div className="team-grid">{team2025Components}</div>
       </section>
     </>
   );
