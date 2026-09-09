@@ -95,13 +95,14 @@ export default function About() {
   ];
   const team2026 = [
     {
-      name: "placeholder",
+      name: "Eyad Mohsen",
       position: "President & Founder",
       image: "/Images/board-2026/1 Eyad.jpg",
       socials: {
-        instagram: "placeholder",
-        email: "placeholder",
-        phone: "placeholder",
+        instagram:
+          "https://www.instagram.com/eyaddada77?stkn=cnE5ZXdsOXlsdHFz&utm_source=qr",
+        email: "mailto:eyad.mohsen772010@gmail.com",
+        phone: "tel:+201114960946",
       },
     },
     {

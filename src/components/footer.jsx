@@ -14,7 +14,7 @@ export default function Footer() {
             </li>
 
             <li>
-              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/about-us">About Us</NavLink>
             </li>
 
             <li>

@@ -1,9 +1,16 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import Wraper from "./wraper";
 import HomePage from "./pages/homepage";
 import "./styles/index.css";
 import About from "./pages/about";
 export default function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
