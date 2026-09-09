@@ -18,6 +18,9 @@ export default function Footer() {
             </li>
 
             <li>
+              <NavLink to="/planting-guide">Planting Guide</NavLink>
+            </li>
+            <li>
               <NavLink to="/dashboard">Dashboard</NavLink>
             </li>
           </ul>

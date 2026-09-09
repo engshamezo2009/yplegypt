@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "../styles/header.css"
+import "../styles/header.css";
 export default function Header() {
   return (
     <header>
@@ -14,6 +14,9 @@ export default function Header() {
           </li>
           <li>
             <NavLink to="/about-us">About Us</NavLink>
+          </li>
+          <li>
+            <NavLink to="/planting-guide">Planting Guide</NavLink>
           </li>
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>

@@ -1,0 +1,544 @@
+/* =========================================
+   HOME PAGE
+========================================= */
+
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg-light);
+  color: var(--color-primary);
+}
+
+/* =========================================
+   SHARED
+========================================= */
+
+.home-page section {
+  position: relative;
+}
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 25px;
+  margin-top: 22px;
+
+  color: var(--color-bg-white);
+  background: var(--color-primary);
+
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-button:hover {
+  transform: translateY(-3px);
+  background: var(--color-primary-light);
+
+  box-shadow: 0 12px 25px
+    color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.home-hero {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 20px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      color-mix(in srgb, var(--color-accent) 35%, transparent),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      color-mix(in srgb, var(--color-primary-light) 25%, transparent),
+      transparent 30%
+    ),
+    var(--color-bg-light);
+
+  overflow: hidden;
+}
+
+/* organic decorative circles */
+
+.home-hero::before {
+  content: "";
+
+  position: absolute;
+  width: 520px;
+  height: 520px;
+
+  right: -220px;
+  top: -180px;
+
+  border-radius: 48% 52% 65% 35% / 55% 40% 60% 45%;
+
+  background: color-mix(in srgb, var(--color-primary-light) 12%, transparent);
+
+  transform: rotate(25deg);
+}
+
+.home-hero::after {
+  content: "";
+
+  position: absolute;
+  width: 260px;
+  height: 260px;
+
+  left: -120px;
+  bottom: -80px;
+
+  border-radius: 50%;
+
+  border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+
+  box-shadow:
+    0 0 0 35px color-mix(in srgb, var(--color-primary) 5%, transparent),
+    0 0 0 70px color-mix(in srgb, var(--color-primary) 3%, transparent);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1000px, 100%);
+
+  text-align: center;
+
+  animation: homeHeroIn 1s ease-out forwards;
+}
+
+.hero-content h1 {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  font-size: clamp(48px, 8vw, 100px);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -4px;
+
+  color: var(--color-primary);
+}
+
+.hero-content p {
+  margin: 30px auto 0;
+
+  font-size: clamp(16px, 2vw, 21px);
+  line-height: 1.7;
+  font-weight: 500;
+
+  color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+}
+
+@keyframes homeHeroIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   OVERVIEW
+========================================= */
+
+.home-overview {
+  padding: clamp(80px, 10vw, 150px) 20px;
+
+  background: var(--color-bg-white);
+}
+
+.overview-content {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: clamp(40px, 7vw, 100px);
+}
+
+.overview-text h2,
+.team-content h2,
+.dashboard-content h2,
+.planting-guide-content h2 {
+  margin: 0;
+
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+
+  color: var(--color-primary);
+}
+
+.overview-text p,
+.team-content p,
+.dashboard-content p,
+.planting-guide-content p {
+  max-width: 600px;
+
+  margin: 24px 0 0;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: color-mix(in srgb, var(--color-primary) 65%, transparent);
+}
+
+.overview-image {
+  position: relative;
+}
+
+.overview-image::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  top: 18px;
+  left: 18px;
+
+  border-radius: 35px;
+
+  background: var(--color-accent);
+
+  z-index: 0;
+}
+
+.overview-image img {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: 430px;
+
+  object-fit: cover;
+
+  border-radius: 35px;
+
+  box-shadow: 0 25px 60px
+    color-mix(in srgb, var(--color-primary) 15%, transparent);
+
+  transition: transform 0.5s ease;
+}
+
+.overview-image:hover img {
+  transform: translate(-6px, -6px);
+}
+
+/* =========================================
+   TEAM
+========================================= */
+
+.home-team {
+  padding: clamp(90px, 11vw, 160px) 20px;
+  background: var(--color-primary);
+  overflow: hidden;
+}
+
+.team-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1200px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+
+  gap: clamp(40px, 7vw, 90px);
+}
+
+.team-text {
+  position: relative;
+  z-index: 2;
+}
+
+.team-text h2 {
+  margin: 0;
+
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+
+  color: var(--color-bg-white);
+}
+
+.team-text p {
+  max-width: 600px;
+  margin: 24px 0 0;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: color-mix(in srgb, var(--color-bg-white) 75%, transparent);
+}
+
+.team-text .section-label {
+  color: var(--color-accent);
+}
+
+.team-text .home-button {
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+
+.team-text .home-button:hover {
+  background: var(--color-accent-light);
+}
+
+.team-image {
+  position: relative;
+  z-index: 2;
+}
+
+.team-image img {
+  display: block;
+
+  width: 100%;
+  height: 420px;
+
+  object-fit: cover;
+
+  border-radius: 35px;
+
+  box-shadow: 0 25px 60px color-mix(in srgb, #000 20%, transparent);
+
+  transition: transform 0.5s ease;
+}
+
+.team-image:hover img {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+@media (max-width: 800px) {
+  .team-content {
+    grid-template-columns: 1fr;
+  }
+
+  .team-image {
+    margin-top: 15px;
+  }
+
+  .team-image img {
+    height: 330px;
+  }
+} 
+/* =========================================
+   PLANTING GUIDE
+========================================= */
+
+.home-planting-guide {
+  padding: clamp(80px, 10vw, 140px) 20px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      color-mix(in srgb, var(--color-accent) 25%, transparent),
+      transparent 25%
+    ),
+    var(--color-bg-light);
+}
+
+.planting-guide-content {
+  position: relative;
+
+  width: min(1000px, 100%);
+  min-height: 380px;
+
+  margin: 0 auto;
+
+  padding: clamp(45px, 7vw, 80px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 45px;
+
+  background: var(--color-bg-white);
+
+  box-shadow: 0 30px 70px
+    color-mix(in srgb, var(--color-primary) 10%, transparent);
+
+  overflow: hidden;
+}
+
+.planting-guide-content::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -100px;
+  bottom: -140px;
+
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.planting-guide-content::after {
+  content: "🌱";
+
+  position: absolute;
+
+  right: 70px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: clamp(80px, 12vw, 150px);
+
+  opacity: 0.15;
+}
+
+.planting-guide-content > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.home-dashboard {
+  padding: clamp(80px, 10vw, 140px) 20px;
+
+  background: var(--color-bg-white);
+}
+
+.dashboard-content {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+
+  padding: clamp(50px, 7vw, 90px);
+
+  border-radius: 40px;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+
+  box-shadow: 0 30px 70px
+    color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.dashboard-content .section-label {
+  color: var(--color-accent);
+}
+
+.dashboard-content h2 {
+  color: var(--color-bg-white);
+}
+
+.dashboard-content p {
+  color: color-mix(in srgb, var(--color-bg-white) 78%, transparent);
+}
+
+.dashboard-content .home-button {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.dashboard-content .home-button:hover {
+  background: var(--color-accent-light);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+  .hero-content h1 {
+    letter-spacing: -2px;
+  }
+
+  .overview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-image {
+    margin-top: 15px;
+  }
+
+  .overview-image img {
+    height: 350px;
+  }
+
+  .planting-guide-content::after {
+    right: 20px;
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-hero {
+    min-height: 75vh;
+  }
+
+  .overview-image img {
+    height: 280px;
+    border-radius: 25px;
+  }
+
+  .overview-image::before {
+    top: 10px;
+    left: 10px;
+    border-radius: 25px;
+  }
+
+  .planting-guide-content,
+  .dashboard-content {
+    padding: 35px 25px;
+    border-radius: 30px;
+  }
+
+  .home-button {
+    width: fit-content;
+  }
+}
