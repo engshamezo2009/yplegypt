@@ -1,0 +1,671 @@
+/* ========================================
+   DASHBOARD PAGE
+======================================== */
+
+.dashboard-page {
+  min-height: 100vh;
+  background: var(--color-bg-light);
+  padding: 0 0 20px 0 ;
+}
+
+/* ========================================
+   DASHBOARD HEADER
+======================================== */
+
+.dashboard-page .dashboard-header {
+  width: 100%;
+  background: var(--color-primary-dark);
+  color: var(--color-text-primary);
+  border-bottom: 1px solid rgba(168, 230, 207, 0.12);
+}
+
+/* ========================================
+   HEADER MAIN CONTAINER
+======================================== */
+
+.dashboard-page .dashboard-header-content {
+  width: min(var(--container-max-width), calc(100% - 100px));
+  margin: 0 auto;
+  padding: 28px 0 0;
+}
+
+/* ========================================
+   HEADER INTRO
+======================================== */
+
+.dashboard-page .dashboard-intro {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 30px;
+  width: 100%;
+  padding: 0 4px 22px;
+  margin: 0 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   BRAND / LABEL
+======================================== */
+
+.dashboard-page .dashboard-label {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.dashboard-page .dashboard-label::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* ========================================
+   DASHBOARD TITLE
+======================================== */
+
+.dashboard-page .dashboard-header h1 {
+  display: block;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   HEADER DESCRIPTION
+======================================== */
+
+.dashboard-page .dashboard-header p {
+  grid-column: 1 / -1;
+  display: block;
+  max-width: 450px;
+  margin: 3px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   EVENT NAVIGATION
+======================================== */
+
+.dashboard-page .dashboard-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  margin: 20px 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ========================================
+   EVENT NAV LINK
+======================================== */
+
+.dashboard-page .dashboard-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 72px;
+  padding: 16px 20px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.dashboard-page .dashboard-nav-link:last-child {
+  border-right: none;
+}
+
+.dashboard-page .dashboard-nav-link:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.dashboard-page .dashboard-nav-link.active {
+  color: var(--color-text-primary);
+  background: rgba(168, 230, 207, 0.07);
+}
+
+/* ========================================
+   ACTIVE INDICATOR
+======================================== */
+
+.dashboard-page .dashboard-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--color-accent);
+  transition: width var(--transition-normal);
+}
+
+.dashboard-page .dashboard-nav-link.active::before {
+  width: 100%;
+}
+
+/* ========================================
+   NAV NUMBER
+======================================== */
+
+.dashboard-page .dashboard-nav-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin-right: 13px;
+  color: var(--color-accent);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  border: 1px solid rgba(168, 230, 207, 0.25);
+  border-radius: 50%;
+}
+
+/* ========================================
+   NAV CONTENT
+======================================== */
+
+.dashboard-page .dashboard-nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.dashboard-page .dashboard-nav-title {
+  display: block;
+  overflow: hidden;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-page .dashboard-nav-year {
+  display: block;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   DASHBOARD CONTENT
+======================================== */
+
+.dashboard-page .dashboard-content {
+  width: min(var(--container-max-width), calc(100% - 100px));
+  margin: 20px auto;
+  padding: 65px 0 90px;
+}
+
+/* ========================================
+   EVENT DASHBOARD
+======================================== */
+
+.dashboard-page .event-dashboard {
+  width: 100%;
+}
+
+/* ========================================
+   EVENT DASHBOARD HEADER
+======================================== */
+
+.dashboard-page .event-dashboard-header {
+  margin-bottom: 50px;
+}
+
+.dashboard-page .event-dashboard-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-primary-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.dashboard-page .event-dashboard-header h2 {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.dashboard-page .event-dashboard-header p {
+  max-width: 600px;
+  margin: 14px 0 0;
+  color: rgba(10, 40, 24, 0.62);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   RANKING SECTION
+======================================== */
+
+.dashboard-page .ranking-section {
+  width: 100%;
+}
+
+.dashboard-page .ranking-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dashboard-page .ranking-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-primary-light);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.dashboard-page .ranking-section-header h3 {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: -0.7px;
+}
+
+.dashboard-page .ranking-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.dashboard-page .ranking-count strong {
+  color: var(--color-primary-dark);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.dashboard-page .ranking-count span {
+  color: rgba(10, 40, 24, 0.5);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ========================================
+   RANKING
+======================================== */
+
+.dashboard-page .ranking {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg-white);
+  border: 1px solid rgba(10, 40, 24, 0.09);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(10, 40, 24, 0.06);
+}
+
+/* ========================================
+   RANKING GRID
+======================================== */
+
+.dashboard-page .ranking-header,
+.dashboard-page .ranking-row {
+  display: grid;
+  grid-template-columns:
+    75px
+    minmax(180px, 1.5fr)
+    minmax(130px, 1fr)
+    120px
+    minmax(140px, 1fr)
+    110px
+    120px;
+  align-items: center;
+}
+
+/* ========================================
+   RANKING HEADER
+======================================== */
+
+.dashboard-page .ranking-header {
+  min-height: 58px;
+  padding: 0 20px;
+  background: var(--color-primary-dark);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   RANKING ROW
+======================================== */
+
+.dashboard-page .ranking-row {
+  min-height: 76px;
+  padding: 0 20px;
+  background: var(--color-bg-white);
+  border-bottom: 1px solid rgba(10, 40, 24, 0.07);
+  color: var(--color-primary-dark);
+  transition: background var(--transition-fast);
+}
+
+.dashboard-page .ranking-row:last-child {
+  border-bottom: none;
+}
+
+.dashboard-page .ranking-row:hover {
+  background: var(--color-bg-light);
+}
+
+/* ========================================
+   RANKING CELLS
+======================================== */
+
+.dashboard-page .ranking-rank {
+  color: rgba(10, 40, 24, 0.48);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.dashboard-page .ranking-name {
+  color: var(--color-primary-dark);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.dashboard-page .ranking-team {
+  color: rgba(10, 40, 24, 0.62);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dashboard-page .ranking-type {
+  color: rgba(10, 40, 24, 0.58);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashboard-page .ranking-school {
+  color: rgba(10, 40, 24, 0.62);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dashboard-page .ranking-submissions {
+  color: rgba(10, 40, 24, 0.62);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dashboard-page .ranking-points {
+  color: var(--color-primary-light);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* ========================================
+   TOP 3
+======================================== */
+
+.dashboard-page .ranking-row:nth-child(1) {
+  background: rgba(168, 230, 207, 0.14);
+}
+
+.dashboard-page .ranking-row:nth-child(1):hover {
+  background: rgba(168, 230, 207, 0.2);
+}
+
+.dashboard-page .ranking-row:nth-child(1) .ranking-rank {
+  color: var(--color-primary-light);
+}
+
+.dashboard-page .ranking-row:nth-child(1) .ranking-points {
+  color: var(--color-primary-dark);
+  font-size: 20px;
+}
+
+.dashboard-page .ranking-row:nth-child(2) .ranking-rank,
+.dashboard-page .ranking-row:nth-child(3) .ranking-rank {
+  color: var(--color-primary-light);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .dashboard-page .dashboard-header-content {
+    width: calc(100% - 60px);
+  }
+
+  .dashboard-page .dashboard-content {
+    width: calc(100% - 60px);
+  }
+
+  .dashboard-page .ranking-header {
+    display: none;
+  }
+
+  .dashboard-page .ranking-row {
+    grid-template-columns:
+      65px
+      1fr
+      100px;
+    grid-template-areas:
+      "rank name points"
+      "rank team type"
+      "rank school submissions";
+    row-gap: 7px;
+    padding: 18px 22px;
+    min-height: auto;
+  }
+
+  .dashboard-page .ranking-rank {
+    grid-area: rank;
+  }
+
+  .dashboard-page .ranking-name {
+    grid-area: name;
+  }
+
+  .dashboard-page .ranking-team {
+    grid-area: team;
+  }
+
+  .dashboard-page .ranking-type {
+    grid-area: type;
+    text-align: right;
+  }
+
+  .dashboard-page .ranking-school {
+    grid-area: school;
+  }
+
+  .dashboard-page .ranking-submissions {
+    grid-area: submissions;
+    text-align: right;
+  }
+
+  .dashboard-page .ranking-points {
+    grid-area: points;
+    text-align: right;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .dashboard-page .dashboard-header-content {
+    width: calc(100% - 32px);
+    padding-top: 22px;
+  }
+
+  .dashboard-page .dashboard-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 2px 18px;
+  }
+
+  .dashboard-page .dashboard-label {
+    margin-bottom: 10px;
+  }
+
+  .dashboard-page .dashboard-header h1 {
+    font-size: 12px;
+  }
+
+  .dashboard-page .dashboard-header p {
+    margin-top: 9px;
+    font-size: 10px;
+  }
+
+  .dashboard-page .dashboard-nav {
+    grid-template-columns: 1fr;
+    margin: 16px 0 20px;
+  }
+
+  .dashboard-page .dashboard-nav-link {
+    min-height: 66px;
+    padding: 15px 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dashboard-page .dashboard-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .dashboard-page .dashboard-nav-number {
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
+  }
+
+  .dashboard-page .dashboard-nav-title {
+    font-size: 11px;
+  }
+
+  .dashboard-page .dashboard-content {
+    width: calc(100% - 32px);
+    padding: 45px 0 65px;
+  }
+
+  .dashboard-page .event-dashboard-header {
+    margin-bottom: 40px;
+  }
+
+  .dashboard-page .event-dashboard-header h2 {
+    font-size: 32px;
+    letter-spacing: -1.4px;
+  }
+
+  .dashboard-page .event-dashboard-header p {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+
+  .dashboard-page .ranking-section-header {
+    align-items: flex-start;
+  }
+
+  .dashboard-page .ranking-section-header h3 {
+    font-size: 21px;
+  }
+
+  .dashboard-page .ranking-count {
+    display: none;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+  .dashboard-page .dashboard-header-content {
+    width: calc(100% - 24px);
+    padding-top: 20px;
+  }
+
+  .dashboard-page .dashboard-intro {
+    padding-bottom: 16px;
+  }
+
+  .dashboard-page .dashboard-label {
+    font-size: 9px;
+    letter-spacing: 1.4px;
+  }
+
+  .dashboard-page .dashboard-header h1 {
+    font-size: 11px;
+  }
+
+  .dashboard-page .dashboard-header p {
+    font-size: 9px;
+  }
+
+  .dashboard-page .dashboard-nav {
+    margin-top: 14px;
+  }
+
+  .dashboard-page .dashboard-nav-link {
+    min-height: 62px;
+    padding: 14px 10px;
+  }
+
+  .dashboard-page .dashboard-nav-number {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .dashboard-page .dashboard-nav-title {
+    font-size: 10px;
+  }
+
+  .dashboard-page .dashboard-content {
+    width: calc(100% - 24px);
+  }
+}
