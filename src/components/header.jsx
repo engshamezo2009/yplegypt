@@ -26,6 +26,11 @@ export default function Header() {
               Login
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/join-us" id="authLink">
+              Join Us
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

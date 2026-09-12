@@ -6,16 +6,18 @@ import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
 import PlantingGuide from "./pages/planting-guide";
 import EventDashboard from "./pages/event-dashboard";
+import Login from "./pages/login";
+import JoinUs from "./pages/join-us";
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Wraper />}>
-          <Route index element={<Navigate to="/planting-guide" />} />
+          <Route index element={<Navigate to="/homepage" />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="about-us" element={<About />} />
           <Route path="dashboard" element={<Dashboard />}>
-            <Route 
+            <Route
               index
               element={<Navigate to="green-future-challenge-2026" replace />}
             />
@@ -27,6 +29,8 @@ export default function App() {
           </Route>
           <Route path="planting-guide" element={<PlantingGuide />} />
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="join-us" element={<JoinUs />} />
       </Routes>
     </BrowserRouter>
   );
