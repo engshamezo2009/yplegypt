@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import login from "../api/login.js";
 import "../styles/login.css";
 export default function Login() {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -62,26 +62,38 @@ export default function Login() {
     setErrors({});
 
     try {
-      /*
-        API call will go here.
-
-        Example later:
-
-        const response = await loginUser({
-          email: formData.email.trim(),
-          password: formData.password,
-        });
-
-      */
-
-      console.log({
+      const response = await login({
         email: formData.email.trim(),
         password: formData.password,
       });
+
+      console.log("Login successful:", response);
+
+      // Login succeeded.
+      // The backend has already set the httpOnly authentication cookie.
+      // We will handle the post-login UI/navigation later.
     } catch (error) {
-      setErrors({
-        submit: "Something went wrong. Please try again.",
-      });
+      switch (error.error) {
+        case "INVALID_CREDENTIALS":
+          setErrors({
+            submit: "Incorrect email or password.",
+          });
+          break;
+
+        case "NETWORK_ERROR":
+          setErrors({
+            submit:
+              "Unable to connect to the server. Please check your connection and try again.",
+          });
+          break;
+
+        case "SERVER_ERROR":
+        default:
+          setErrors({
+            submit: "Something went wrong. Please try again later.",
+          });
+          break;
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -102,9 +114,7 @@ export default function Login() {
         {/* Header */}
         <div className="login-header">
           <span className="login-label">YPL Egypt</span>
-
           <h1>Welcome Back</h1>
-
           <p>Sign in to continue to your account.</p>
         </div>
 
