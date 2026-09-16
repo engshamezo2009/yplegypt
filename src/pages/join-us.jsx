@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import createApplication from "../api/createApplication.js";
 import "../styles/join-us.css";
-
 export default function JoinUs() {
   const navigate = useNavigate();
 
@@ -17,101 +16,98 @@ export default function JoinUs() {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
     setErrors((prev) => ({
       ...prev,
       [name]: "",
       submit: "",
     }));
   };
-
   const validateForm = () => {
     const newErrors = {};
-
     const name = formData.name.trim();
     const email = formData.email.trim();
     const phone = formData.phone.trim();
     const password = formData.password;
     const question = formData.question.trim();
-
     if (!name) {
       newErrors.name = "Name is required.";
     } else if (name.length < 2) {
       newErrors.name = "Name must be at least 2 characters.";
     }
-
     if (!email) {
       newErrors.email = "Email is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Please enter a valid email address.";
     }
-
     if (!phone) {
       newErrors.phone = "Phone number is required.";
     } else if (!/^\+?[0-9\s\-()]{8,20}$/.test(phone)) {
       newErrors.phone = "Please enter a valid phone number.";
     }
-
     if (!password) {
       newErrors.password = "Password is required.";
     } else if (password.length < 8) {
       newErrors.password = "Password must be at least 8 characters.";
     }
-
     if (!question) {
       newErrors.question = "This field is required.";
     }
-
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const validationErrors = validateForm();
-
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
     setIsSubmitting(true);
     setErrors({});
-
     try {
-      /*
-        API call will go here.
-
-        Example later:
-
-        const response = await joinUs({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          password: formData.password,
-          question: formData.question.trim(),
-        });
-      */
-
-      console.log({
+      await createApplication({
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
         password: formData.password,
         question: formData.question.trim(),
       });
+
+      navigate("/login");
     } catch (error) {
-      setErrors({
-        submit: "Something went wrong. Please try again.",
-      });
+      switch (error.error) {
+        case "DATA_ALREADY_EXISTS":
+          setErrors({
+            email: "An account with this email already exists.",
+          });
+          break;
+
+        case "VALIDATION_ERROR":
+          setErrors({
+            submit: "Please check your information and try again.",
+          });
+          break;
+
+        case "NETWORK_ERROR":
+          setErrors({
+            submit:
+              "Unable to connect to the server. Please check your connection and try again.",
+          });
+          break;
+
+        case "SERVER_ERROR":
+        default:
+          setErrors({
+            submit: "Something went wrong. Please try again later.",
+          });
+          break;
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -132,9 +128,7 @@ export default function JoinUs() {
         {/* Header */}
         <div className="join-us-header">
           <span className="join-us-label">YPL Egypt</span>
-
           <h1>Join Us</h1>
-
           <p>Create your account and become part of the YPL Egypt community.</p>
         </div>
 
@@ -143,7 +137,6 @@ export default function JoinUs() {
           {/* Name */}
           <div className="join-us-field">
             <label htmlFor="join-us-name">Name</label>
-
             <input
               id="join-us-name"
               name="name"
@@ -166,7 +159,6 @@ export default function JoinUs() {
           {/* Email */}
           <div className="join-us-field">
             <label htmlFor="join-us-email">Email</label>
-
             <input
               id="join-us-email"
               name="email"
@@ -191,7 +183,6 @@ export default function JoinUs() {
           {/* Phone */}
           <div className="join-us-field">
             <label htmlFor="join-us-phone">Phone Number</label>
-
             <input
               id="join-us-phone"
               name="phone"
