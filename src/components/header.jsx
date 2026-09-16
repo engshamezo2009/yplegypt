@@ -1,20 +1,31 @@
 import { useState } from "react";
+
 import { NavLink } from "react-router-dom";
+
+import { useAuth } from "../context/AuthContext.jsx";
 
 import "../styles/header.css";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const { user, isAuthenticated, setUser } = useAuth();
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleSignOut = () => {
+    setUser(null);
+    setIsProfileOpen(false);
+    closeMenu();
   };
 
   return (
     <header className="site-header">
       <div className="logo-box">
         <img src="/Images/LogoGreen.png" alt="YPL Logo" />
-
         <span className="logo-text">YPL</span>
       </div>
 
@@ -58,17 +69,50 @@ export default function Header() {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to="/login" id="authLink" onClick={closeMenu}>
-              Login
-            </NavLink>
-          </li>
+          {!isAuthenticated ? (
+            <>
+              <li>
+                <NavLink to="/login" id="authLink" onClick={closeMenu}>
+                  Login
+                </NavLink>
+              </li>
 
-          <li>
-            <NavLink to="/join-us" id="authLink" onClick={closeMenu}>
-              Join Us
-            </NavLink>
-          </li>
+              <li>
+                <NavLink to="/join-us" id="authLink" onClick={closeMenu}>
+                  Join Us
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <li className="profile-menu">
+              <button
+                type="button"
+                className="profile-button"
+                onClick={() => setIsProfileOpen((prev) => !prev)}
+                aria-expanded={isProfileOpen}
+              >
+                Profile
+              </button>
+
+              {isProfileOpen && (
+                <div className="profile-dropdown">
+                  <div className="profile-info">
+                    <p>{user.name}</p>
+                    <p>{user.email}</p>
+                    <p>{user.phone}</p>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="sign-out-button"
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </li>
+          )}
         </ul>
       </nav>
     </header>
