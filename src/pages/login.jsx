@@ -1,9 +1,18 @@
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+
+import { useAuth } from "../context/AuthContext.jsx";
+
 import login from "../api/login.js";
+
 import "../styles/login.css";
+
 export default function Login() {
   const navigate = useNavigate();
+
+  const { setUser } = useAuth();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,7 +30,6 @@ export default function Login() {
       [name]: value,
     }));
 
-    // Remove the error for this field once the user starts fixing it
     setErrors((prev) => ({
       ...prev,
       [name]: "",
@@ -67,11 +75,9 @@ export default function Login() {
         password: formData.password,
       });
 
-      console.log("Login successful:", response);
+      setUser(response.member);
 
-      // Login succeeded.
-      // The backend has already set the httpOnly authentication cookie.
-      // We will handle the post-login UI/navigation later.
+      navigate("/homepage");
     } catch (error) {
       switch (error.error) {
         case "INVALID_CREDENTIALS":
@@ -102,7 +108,6 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-container">
-        {/* Back to Home */}
         <button
           type="button"
           className="login-back-button"
@@ -111,16 +116,13 @@ export default function Login() {
           ← Back to Home
         </button>
 
-        {/* Header */}
         <div className="login-header">
           <span className="login-label">YPL Egypt</span>
           <h1>Welcome Back</h1>
           <p>Sign in to continue to your account.</p>
         </div>
 
-        {/* Form */}
         <form className="login-form" onSubmit={handleSubmit} noValidate>
-          {/* Email */}
           <div className="login-field">
             <label htmlFor="login-email">Email</label>
 
@@ -143,7 +145,6 @@ export default function Login() {
             )}
           </div>
 
-          {/* Password */}
           <div className="login-field">
             <label htmlFor="login-password">Password</label>
 
@@ -179,14 +180,12 @@ export default function Login() {
             )}
           </div>
 
-          {/* General Error */}
           {errors.submit && (
             <div className="login-submit-error" role="alert">
               {errors.submit}
             </div>
           )}
 
-          {/* Submit */}
           <button
             type="submit"
             className="login-submit-button"
@@ -196,7 +195,6 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Join Us */}
         <div className="login-join">
           <span>Don't have an account?</span>
 

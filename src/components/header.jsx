@@ -1,25 +1,25 @@
 import { useState } from "react";
-
 import { NavLink } from "react-router-dom";
-
 import { useAuth } from "../context/AuthContext.jsx";
-
+import logout from "../api/logout.js";
 import "../styles/header.css";
-
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-
   const { user, isAuthenticated, setUser } = useAuth();
-
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+  const handleSignOut = async () => {
+    try {
+      await logout();
 
-  const handleSignOut = () => {
-    setUser(null);
-    setIsProfileOpen(false);
-    closeMenu();
+      setUser(null);
+      setIsProfileOpen(false);
+      closeMenu();
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
   };
 
   return (
