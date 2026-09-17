@@ -79,7 +79,11 @@ export default function JoinUs() {
         question: formData.question.trim(),
       });
 
-      navigate("/login");
+      navigate("/homepage", {
+        state: {
+          showApplicationSuccess: true,
+        },
+      });
     } catch (error) {
       switch (error.error) {
         case "DATA_ALREADY_EXISTS":

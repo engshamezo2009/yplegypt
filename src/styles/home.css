@@ -361,7 +361,7 @@
   .team-image img {
     height: 330px;
   }
-} 
+}
 /* =========================================
    PLANTING GUIDE
 ========================================= */
@@ -540,5 +540,202 @@
 
   .home-button {
     width: fit-content;
+  }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  animation: modalOverlayIn 0.25s ease;
+}
+
+/* Application Success Modal */
+.application-success-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 450px;
+
+  padding: 40px 35px;
+
+  background: #ffffff;
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+  animation: modalIn 0.3s ease;
+}
+
+/* Close Button */
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #555;
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.modal-close-button:hover {
+  background: #f0f0f0;
+  color: #222;
+}
+
+/* Success Icon */
+.success-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e8f5e9;
+  color: #2e7d32;
+
+  font-size: 42px;
+  font-weight: 700;
+}
+
+/* Title */
+.application-success-modal h2 {
+  margin: 0 0 15px;
+
+  color: #1f3d2b;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Description */
+.application-success-modal p {
+  margin: 0 auto 30px;
+
+  max-width: 360px;
+
+  color: #666;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Confirm Button */
+.modal-confirm-button {
+  min-width: 130px;
+
+  padding: 12px 25px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2e7d32;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-confirm-button:hover {
+  background: #256628;
+  transform: translateY(-1px);
+}
+
+.modal-confirm-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes modalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .modal-overlay {
+    padding: 15px;
+  }
+
+  .application-success-modal {
+    padding: 35px 25px;
+    border-radius: 16px;
+  }
+
+  .success-icon {
+    width: 65px;
+    height: 65px;
+
+    font-size: 36px;
+  }
+
+  .application-success-modal h2 {
+    font-size: 24px;
+  }
+
+  .application-success-modal p {
+    font-size: 15px;
+  }
+
+  .modal-confirm-button {
+    width: 100%;
   }
 }
