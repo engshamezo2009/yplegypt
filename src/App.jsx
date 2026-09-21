@@ -8,6 +8,7 @@ import PlantingGuide from "./pages/planting-guide";
 import EventDashboard from "./pages/event-dashboard";
 import Login from "./pages/login";
 import JoinUs from "./pages/join-us";
+import ComingSoon from "./pages/ComingSoon";
 export default function App() {
   return (
     <BrowserRouter>
@@ -16,8 +17,8 @@ export default function App() {
           <Route index element={<Navigate to="/homepage" />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="about-us" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route
+          <Route path="dashboard" element={<ComingSoon />}>
+            {/* <Route
               index
               element={<Navigate to="green-future-challenge-2026" replace />}
             />
@@ -25,7 +26,7 @@ export default function App() {
             <Route
               path="green-future-challenge-2026"
               element={<EventDashboard />}
-            />
+            />*/}
           </Route>
           <Route path="planting-guide" element={<PlantingGuide />} />
         </Route>
