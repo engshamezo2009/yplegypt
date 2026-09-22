@@ -68,7 +68,11 @@ export default function Header() {
               Dashboard
             </NavLink>
           </li>
-
+          <li>
+            <NavLink to="/planting-field" onClick={closeMenu}>
+              Planting Field
+            </NavLink>
+          </li>
           {!isAuthenticated ? (
             <>
               <li>

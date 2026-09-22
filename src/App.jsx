@@ -4,11 +4,12 @@ import HomePage from "./pages/homepage";
 import "./styles/index.css";
 import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
-import PlantingGuide from "./pages/planting-guide";
 import EventDashboard from "./pages/event-dashboard";
+import PlantingGuide from "./pages/planting-guide";
 import Login from "./pages/login";
 import JoinUs from "./pages/join-us";
 import ComingSoon from "./pages/ComingSoon";
+import PlantingField from "./pages/planting-field";
 export default function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ export default function App() {
             />*/}
           </Route>
           <Route path="planting-guide" element={<PlantingGuide />} />
+          <Route path="planting-field" element={<PlantingField />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="join-us" element={<JoinUs />} />
