@@ -1,12 +1,7 @@
-// PlantingField.jsx
-
 import { useEffect, useState } from "react";
-
 import Plot from "../components/planting/Plot.jsx";
-
 import ErrorModal from "../components/modals/ErrorModal.jsx";
 import ClaimPlotModal from "../components/modals/ClaimPlotModal.jsx";
-
 import getField from "../api/getField.js";
 import "../styles/modals.css";
 import "../styles/planting-field.css";
@@ -44,6 +39,16 @@ export default function PlantingField() {
     setSelectedPlot(null);
   };
 
+  const handleClaimSuccess = (updatedField) => {
+    setPlots((currentPlots) =>
+      currentPlots.map((plot) =>
+        plot.id === updatedField.id ? updatedField : plot,
+      ),
+    );
+
+    setSelectedPlot(null);
+  };
+
   return (
     <main className="planting-field-page">
       <section className="planting-field-header">
@@ -73,8 +78,6 @@ export default function PlantingField() {
           </div>
         ) : (
           <div className="planting-field-empty">
-            <div className="planting-field-empty-icon">+</div>
-
             <h2>No plots available</h2>
 
             <p>
@@ -86,7 +89,11 @@ export default function PlantingField() {
       </section>
 
       {selectedPlot?.state === "available" && (
-        <ClaimPlotModal plot={selectedPlot} onClose={handleCloseModal} />
+        <ClaimPlotModal
+          plot={selectedPlot}
+          onClose={handleCloseModal}
+          onClaimSuccess={handleClaimSuccess}
+        />
       )}
 
       {selectedPlot?.state === "occupied" && (

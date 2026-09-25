@@ -1,5 +1,3 @@
-// Plot.jsx
-
 export default function Plot({ id, state, owner, plant, onClick }) {
   const isOccupied = state === "occupied";
 
@@ -10,7 +8,7 @@ export default function Plot({ id, state, owner, plant, onClick }) {
       }`}
       style={{
         backgroundImage: `url(${
-          isOccupied ? "/texture/Farmland.png" : "/texture/Dirt.png"
+          isOccupied ? "/texture/Farmland.png " : "/texture/Dirt.jpeg"
         })`,
       }}
       onClick={onClick}
@@ -26,7 +24,7 @@ export default function Plot({ id, state, owner, plant, onClick }) {
 
         {isOccupied && (
           <>
-            <span className="plot-info-owner">Owner: {owner}</span>
+            <span className="plot-info-owner">Owner: {owner?.name}</span>
 
             <span className="plot-info-plant">Plant: {plant}</span>
           </>

@@ -1,3 +1,25 @@
+:root {
+  --modal-overlay: rgba(16, 27, 20, 0.55);
+
+  --modal-surface: #ffffff;
+  --modal-surface-soft: #f7f9f7;
+
+  --modal-text: #1c2b21;
+  --modal-text-secondary: #68756d;
+  --modal-text-muted: #8b968f;
+
+  --modal-border: #dfe5e1;
+
+  --modal-primary: #2f7549;
+  --modal-primary-hover: #265f3b;
+  --modal-primary-soft: #edf5ef;
+
+  --modal-danger: #b23a3a;
+  --modal-danger-hover: #963030;
+  --modal-danger-soft: #fff3f3;
+  --modal-danger-border: #edcccc;
+}
+
 /* =========================
    MODAL OVERLAY
 ========================= */
@@ -11,16 +33,15 @@
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
+  padding: 20px;
 
-  background: rgba(9, 18, 12, 0.58);
+  background: var(--modal-overlay);
 
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
-  animation: modal-overlay-appear 0.2s ease;
+  animation: modal-overlay-appear 0.18s ease;
 }
-
 
 /* =========================
    MODAL CONTAINER
@@ -33,20 +54,18 @@
 
   overflow: hidden;
 
-  border: 1px solid rgba(20, 40, 26, 0.1);
-  border-radius: 18px;
+  border: 1px solid var(--modal-border);
+  border-radius: 16px;
 
-  background: #ffffff;
-
-  color: #17231a;
+  background: var(--modal-surface);
+  color: var(--modal-text);
 
   box-shadow:
-    0 25px 70px rgba(0, 0, 0, 0.22),
-    0 8px 25px rgba(0, 0, 0, 0.08);
+    0 20px 55px rgba(10, 25, 15, 0.18),
+    0 4px 14px rgba(10, 25, 15, 0.06);
 
-  animation: modal-appear 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: modal-appear 0.2s ease;
 }
-
 
 /* =========================
    MODAL ANIMATIONS
@@ -65,7 +84,7 @@
 @keyframes modal-appear {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.97);
+    transform: translateY(8px) scale(0.98);
   }
 
   to {
@@ -74,28 +93,25 @@
   }
 }
 
-
 /* =========================
    MODAL HEADER
 ========================= */
 
 .modal-header {
-  position: relative;
-
   display: flex;
   align-items: center;
-  gap: 14px;
 
-  padding: 22px 24px;
+  gap: 13px;
 
-  background: #1d5c3a;
+  padding: 20px 20px;
 
-  color: #ffffff;
+  border-bottom: 1px solid var(--modal-border);
+
+  background: var(--modal-surface-soft);
 }
 
-
 /* =========================
-   MODAL HEADER ICON
+   HEADER ICON
 ========================= */
 
 .modal-header-icon {
@@ -103,102 +119,102 @@
   align-items: center;
   justify-content: center;
 
-  width: 42px;
-  height: 42px;
   flex-shrink: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
 
-  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid #cfe1d4;
+  border-radius: 10px;
 
-  color: #ffffff;
+  background: var(--modal-primary-soft);
 
-  font-size: 1.15rem;
+  color: var(--modal-primary);
+
+  font-size: 1rem;
   font-weight: 700;
 }
 
-
 /* =========================
-   MODAL HEADER CONTENT
+   HEADER CONTENT
 ========================= */
 
 .modal-header-content {
   min-width: 0;
+  flex: 1;
 }
 
-.modal-header .modal-title {
+.modal-title {
   margin: 0;
 
-  color: #ffffff;
+  color: var(--modal-text);
 
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  line-height: 1.2;
+
+  line-height: 1.25;
 }
 
 .modal-header-subtitle {
   margin: 4px 0 0;
 
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--modal-text-secondary);
 
-  font-size: 0.75rem;
+  font-size: 0.76rem;
+
   line-height: 1.4;
 }
 
-
 /* =========================
-   MODAL CLOSE BUTTON
+   CLOSE BUTTON
 ========================= */
 
 .modal-close {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   width: 32px;
   height: 32px;
 
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9px;
+  margin-left: auto;
+  padding: 0;
 
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--modal-border);
+  border-radius: 8px;
 
-  color: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
 
-  font-size: 1rem;
+  color: var(--modal-text-secondary);
+
+  font-size: 1.1rem;
+  line-height: 1;
 
   cursor: pointer;
 
-  transform: translateY(-50%);
-
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .modal-close:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: #cbd6cf;
 
-  background: rgba(255, 255, 255, 0.2);
+  background: #f1f4f2;
 
-  color: #ffffff;
+  color: var(--modal-text);
 }
-
 
 /* =========================
    MODAL BODY
 ========================= */
 
 .modal-body {
-  padding: 26px 24px 24px;
+  padding: 22px 22px 20px;
 }
-
 
 /* =========================
    MODAL DESCRIPTION
@@ -207,12 +223,79 @@
 .modal-description {
   margin: 0;
 
-  color: #667268;
+  color: var(--modal-text-secondary);
 
-  font-size: 0.9rem;
-  line-height: 1.65;
+  font-size: 0.86rem;
+
+  line-height: 1.6;
 }
 
+/* =========================
+   FORM FIELDS
+========================= */
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.modal-field label {
+  color: var(--modal-text);
+
+  font-size: 0.77rem;
+  font-weight: 600;
+}
+
+.modal-field input,
+.modal-field select {
+  width: 100%;
+  min-height: 43px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #d5ded8;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: var(--modal-text);
+
+  font: inherit;
+  font-size: 0.82rem;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.modal-field input:hover,
+.modal-field select:hover {
+  border-color: #bdcbc2;
+}
+
+.modal-field input::placeholder {
+  color: var(--modal-text-muted);
+}
+
+.modal-field input:focus,
+.modal-field select:focus {
+  border-color: var(--modal-primary);
+
+  box-shadow: 0 0 0 3px rgba(47, 117, 73, 0.09);
+}
+
+.modal-field select {
+  cursor: pointer;
+}
+
+.modal-field select option {
+  background: #ffffff;
+  color: var(--modal-text);
+}
 
 /* =========================
    MODAL ACTIONS
@@ -223,11 +306,10 @@
   align-items: center;
   justify-content: flex-end;
 
-  gap: 10px;
+  gap: 9px;
 
-  padding: 0 24px 24px;
+  padding: 0 22px 22px;
 }
-
 
 /* =========================
    MODAL BUTTON
@@ -235,31 +317,34 @@
 
 .modal-button {
   min-width: 82px;
+  min-height: 40px;
 
-  padding: 10px 18px;
+  padding: 9px 16px;
 
-  border: 1px solid #d5ddd7;
-  border-radius: 9px;
+  border: 1px solid var(--modal-border);
+  border-radius: 8px;
 
-  background: #f4f7f4;
+  background: #f6f8f6;
 
-  color: #26352b;
+  color: var(--modal-text);
 
-  font-size: 0.82rem;
+  font: inherit;
+  font-size: 0.8rem;
   font-weight: 600;
 
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .modal-button:hover {
-  border-color: #b9c8bd;
+  border-color: #c3cec7;
 
-  background: #edf2ee;
+  background: #edf1ee;
 
   transform: translateY(-1px);
 }
@@ -268,527 +353,215 @@
   transform: translateY(0);
 }
 
-
-/* =========================
-   ERROR MODAL
-========================= */
-
-.error-modal-container {
-  width: min(450px, 100%);
-}
-
-
-/* =========================
-   ERROR HEADER
-========================= */
-
-.error-modal-container .modal-header {
-  background:
-    linear-gradient(
-      135deg,
-      #b83232,
-      #922727
-    );
-}
-
-
-/* =========================
-   ERROR HEADER ICON
-========================= */
-
-.error-modal-container .modal-header-icon {
-  position: relative;
-
-  width: 44px;
-  height: 44px;
-
-  border: 0;
-  border-radius: 13px;
-
-  background: rgba(255, 255, 255, 0.13);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-
-/*
-   Outer ring
-*/
-
-.error-modal-container .modal-header-icon::before {
-  content: "";
-
-  position: absolute;
-
-  width: 24px;
-  height: 24px;
-
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-}
-
-
-/*
-   Exclamation mark
-*/
-
-.error-modal-container .modal-header-icon::after {
-  content: "!";
-
-  position: absolute;
-
-  color: #ffffff;
-
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-
-/* Hide the actual text if JSX contains ! */
-
-.error-modal-container .modal-header-icon {
-  font-size: 0;
-}
-
-
-/* =========================
-   ERROR BODY
-========================= */
-
-.error-modal-container .modal-body {
-  padding-top: 25px;
-}
-
-.error-modal-container .modal-description {
-  color: #59665d;
-}
-
-
-/* =========================
-   ERROR BUTTON
-========================= */
-
-.error-modal-container .modal-button {
-  border-color: #e1caca;
-
-  background: #fff6f6;
-
-  color: #9a3030;
-}
-
-.error-modal-container .modal-button:hover {
-  border-color: #dbaaaa;
-
-  background: #fcecec;
-
-  color: #842525;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 600px) {
-  .modal-overlay {
-    padding: 18px;
-  }
-
-  .modal-header {
-    padding: 19px 20px;
-  }
-
-  .modal-header-icon {
-    width: 39px;
-    height: 39px;
-
-    border-radius: 10px;
-
-    font-size: 1rem;
-  }
-
-  .modal-header .modal-title {
-    font-size: 1.05rem;
-  }
-
-  .modal-header-subtitle {
-    font-size: 0.7rem;
-  }
-
-  .modal-body {
-    padding: 22px 20px 20px;
-  }
-
-  .modal-actions {
-    padding: 0 20px 20px;
-  }
-
-  .modal-close {
-    right: 16px;
-
-    width: 30px;
-    height: 30px;
-  }
-
-  .modal-description {
-    font-size: 0.84rem;
-  }
-
-  .error-modal-container .modal-header-icon {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-
-@media (max-width: 380px) {
-  .modal-overlay {
-    padding: 12px;
-  }
-
-  .modal-header {
-    gap: 11px;
-
-    padding: 17px 16px;
-  }
-
-  .modal-body {
-    padding: 20px 16px 18px;
-  }
-
-  .modal-actions {
-    padding: 0 16px 18px;
-  }
-
-  .modal-header .modal-title {
-    font-size: 1rem;
-  }
-}
 /* =========================
    CLAIM PLOT MODAL
 ========================= */
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 24px;
-
-  background: rgba(2, 12, 7, 0.72);
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-
-/* =========================
-   MAIN CONTAINER
-========================= */
-
 .claim-plot-modal-container {
-  position: relative;
-
   width: min(480px, 100%);
-
-  padding: 0;
-
-  overflow: hidden;
-
-  border: 1px solid rgba(168, 230, 207, 0.16);
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(20, 50, 32, 0.98),
-      rgba(7, 27, 16, 0.98)
-    );
-
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-  color: var(--color-text-primary);
-
-  animation: claimPlotModalIn 0.22s ease-out;
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 .claim-plot-modal-header {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  gap: 14px;
-
-  padding: 24px 54px 24px 24px;
-
-  border-bottom: 1px solid rgba(168, 230, 207, 0.1);
-
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--modal-surface-soft);
 }
 
-.modal-header-icon {
+/* =========================
+   CLAIM PLOT BUTTON
+========================= */
+
+.claim-plot-submit-button {
+  border-color: var(--modal-primary);
+
+  background: var(--modal-primary);
+
+  color: #ffffff;
+}
+
+.claim-plot-submit-button:hover {
+  border-color: var(--modal-primary-hover);
+
+  background: var(--modal-primary-hover);
+
+  color: #ffffff;
+}
+
+/* =========================
+   CLAIM PLOT ERROR
+========================= */
+
+.claim-plot-error {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 11px 12px;
+
+  border: 1px solid var(--modal-danger-border);
+  border-radius: 9px;
+
+  background: var(--modal-danger-soft);
+
+  color: var(--modal-danger);
+}
+
+.claim-plot-error-icon {
   display: flex;
   align-items: center;
   justify-content: center;
 
   flex-shrink: 0;
 
-  width: 46px;
-  height: 46px;
+  width: 23px;
+  height: 23px;
 
-  border: 1px solid rgba(168, 230, 207, 0.2);
-  border-radius: 13px;
+  border-radius: 50%;
 
-  background: rgba(168, 230, 207, 0.07);
+  background: var(--modal-danger);
 
-  color: var(--color-accent);
+  color: #ffffff;
 
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
-.modal-header-content {
+.claim-plot-error-content {
+  flex: 1;
   min-width: 0;
 }
 
-.modal-title {
-  margin: 0 0 5px;
+.claim-plot-error-content strong {
+  display: block;
 
-  color: #f4fff9;
+  margin-bottom: 2px;
 
-  font-size: 1.35rem;
-  font-weight: var(--font-weight-bold);
+  color: #8f3030;
 
-  line-height: 1.2;
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
-.modal-header-subtitle {
+.claim-plot-error-content p {
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.52);
+  color: #a04a4a;
 
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-size: 0.73rem;
+
+  line-height: 1.45;
 }
 
-
-/* =========================
-   CLOSE BUTTON
-========================= */
-
-.modal-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-
+.claim-plot-error-close {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 34px;
-  height: 34px;
+  flex-shrink: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  width: 24px;
+  height: 24px;
 
-  background: rgba(255, 255, 255, 0.04);
+  padding: 0;
 
-  color: rgba(255, 255, 255, 0.7);
+  border: 0;
 
-  font-size: 1.2rem;
-  line-height: 1;
+  background: transparent;
 
-  cursor: pointer;
+  color: #a04a4a;
 
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.modal-close:hover {
-  border-color: rgba(168, 230, 207, 0.25);
-
-  background: rgba(168, 230, 207, 0.08);
-
-  color: #ffffff;
-}
-
-
-/* =========================
-   BODY
-========================= */
-
-.modal-body {
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
-
-  padding: 24px;
-}
-
-
-/* =========================
-   FORM FIELD
-========================= */
-
-.modal-field {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.modal-field label {
-  color: rgba(255, 255, 255, 0.78);
-
-  font-size: 0.77rem;
-  font-weight: var(--font-weight-semibold);
-}
-
-.modal-field input,
-.modal-field select {
-  width: 100%;
-
-  min-height: 44px;
-
-  padding: 11px 13px;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-
-  outline: none;
-
-  background: rgba(255, 255, 255, 0.045);
-
-  color: #ffffff;
-
-  font: inherit;
-  font-size: 0.83rem;
-
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.modal-field input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.modal-field input:focus,
-.modal-field select:focus {
-  border-color: rgba(168, 230, 207, 0.5);
-
-  background: rgba(168, 230, 207, 0.035);
-
-  box-shadow: 0 0 0 3px rgba(168, 230, 207, 0.07);
-}
-
-.modal-field select option {
-  background: #10291b;
-
-  color: #ffffff;
-}
-
-
-/* =========================
-   ACTIONS
-========================= */
-
-.modal-actions {
-  display: flex;
-  gap: 10px;
-
-  padding: 18px 24px 24px;
-
-  border-top: 1px solid rgba(168, 230, 207, 0.08);
-}
-
-.modal-button {
-  flex: 1;
-
-  min-height: 44px;
-
-  border-radius: 10px;
-
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
 
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
 }
 
-.modal-button-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  background: rgba(255, 255, 255, 0.035);
-
-  color: rgba(255, 255, 255, 0.7);
+.claim-plot-error-close:hover {
+  color: var(--modal-danger-hover);
 }
-
-.modal-button-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-
-  background: rgba(255, 255, 255, 0.07);
-
-  color: #ffffff;
-}
-
-.claim-plot-submit-button {
-  border: 1px solid rgba(168, 230, 207, 0.3);
-
-  background: rgba(168, 230, 207, 0.12);
-
-  color: var(--color-accent);
-}
-
-.claim-plot-submit-button:hover {
-  border-color: rgba(168, 230, 207, 0.5);
-
-  background: rgba(168, 230, 207, 0.18);
-
-  transform: translateY(-1px);
-}
-
 
 /* =========================
-   ANIMATION
+   ERROR MODAL
 ========================= */
 
-@keyframes claimPlotModalIn {
-  from {
-    opacity: 0;
-
-    transform: translateY(12px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0) scale(1);
-  }
+.error-modal-container {
+  width: min(440px, 100%);
 }
 
+.error-modal-container .modal-header {
+  background: #fff6f6;
+
+  border-bottom-color: #efdada;
+}
+
+.error-modal-container .modal-header-icon {
+  border-color: var(--modal-danger-border);
+
+  background: var(--modal-danger-soft);
+
+  color: var(--modal-danger);
+}
+
+.error-modal-container .modal-title {
+  color: #8f3030;
+}
+
+.error-modal-container .modal-header-subtitle {
+  color: #9b6868;
+}
+
+.error-modal-container .modal-close {
+  border-color: #ead5d5;
+
+  background: #ffffff;
+
+  color: #9d6262;
+}
+
+.error-modal-container .modal-close:hover {
+  border-color: #dfbbbb;
+
+  background: #fff0f0;
+
+  color: var(--modal-danger);
+}
+
+.error-modal-container .modal-description {
+  color: #59665d;
+}
+
+/* =========================
+   ERROR MODAL BUTTON
+========================= */
+
+.error-modal-container .modal-button {
+  border-color: var(--modal-danger-border);
+
+  background: var(--modal-danger-soft);
+
+  color: var(--modal-danger);
+}
+
+.error-modal-container .modal-button:hover {
+  border-color: #dfb4b4;
+
+  background: #fdeaea;
+
+  color: var(--modal-danger-hover);
+}
+
+/* =========================
+   DISABLED STATES
+========================= */
+
+.modal-button:disabled,
+.modal-close:disabled,
+.modal-field input:disabled,
+.modal-field select:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+
+  transform: none;
+}
 
 /* =========================
    RESPONSIVE
@@ -799,38 +572,69 @@
     padding: 16px;
   }
 
-  .claim-plot-modal-container {
-    border-radius: 20px;
+  .modal {
+    border-radius: 14px;
   }
 
-  .claim-plot-modal-header {
-    padding: 20px 50px 20px 20px;
+  .modal-header {
+    padding: 18px;
   }
 
   .modal-header-icon {
-    width: 42px;
-    height: 42px;
+    width: 37px;
+    height: 37px;
 
-    border-radius: 12px;
+    border-radius: 9px;
   }
 
   .modal-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .modal-header-subtitle {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+  }
+
+  .modal-close {
+    width: 30px;
+    height: 30px;
   }
 
   .modal-body {
-    padding: 20px;
-
-    gap: 15px;
+    padding: 20px 18px 18px;
   }
 
   .modal-actions {
-    padding: 16px 20px 20px;
+    padding: 0 18px 18px;
+  }
 
+  .claim-plot-error {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-header {
+    gap: 10px;
+
+    padding: 16px;
+  }
+
+  .modal-body {
+    padding: 18px 16px 16px;
+  }
+
+  .modal-actions {
     flex-direction: column-reverse;
+
+    padding: 0 16px 16px;
+  }
+
+  .modal-button {
+    width: 100%;
   }
 }
