@@ -638,3 +638,137 @@
     width: 100%;
   }
 }
+
+.plot-details-modal-container {
+  width: min(460px, 100%);
+}
+
+.plot-details-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  width: fit-content;
+
+  margin-bottom: 20px;
+  padding: 6px 10px;
+
+  border: 1px solid #cfe2d4;
+  border-radius: 999px;
+
+  background: #edf5ef;
+
+  color: #2f7549;
+
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.plot-details-status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #2f7549;
+}
+
+.plot-details-section {
+  margin-top: 18px;
+}
+
+.plot-details-section:first-of-type {
+  margin-top: 0;
+}
+
+.plot-details-section-title {
+  margin: 0 0 9px;
+
+  color: #68756d;
+
+  font-size: 0.74rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.plot-details-info {
+  overflow: hidden;
+
+  border: 1px solid #dfe5e1;
+  border-radius: 9px;
+
+  background: #ffffff;
+}
+
+.plot-details-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 11px 13px;
+
+  border-bottom: 1px solid #e8ece9;
+}
+
+.plot-details-row:last-child {
+  border-bottom: 0;
+}
+
+.plot-details-label {
+  flex-shrink: 0;
+
+  color: #8b968f;
+
+  font-size: 0.75rem;
+}
+
+.plot-details-value {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #1c2b21;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  text-align: right;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plot-details-plant {
+  padding: 12px 13px;
+
+  border: 1px solid #dfe5e1;
+  border-radius: 9px;
+
+  background: #f7f9f7;
+
+  color: #1c2b21;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+  .plot-details-modal-container {
+    width: 100%;
+  }
+
+  .plot-details-row {
+    align-items: flex-start;
+  }
+
+  .plot-details-value {
+    max-width: 62%;
+  }
+}

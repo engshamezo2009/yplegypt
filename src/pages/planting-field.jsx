@@ -3,6 +3,7 @@ import Plot from "../components/planting/Plot.jsx";
 import ErrorModal from "../components/modals/ErrorModal.jsx";
 import ClaimPlotModal from "../components/modals/ClaimPlotModal.jsx";
 import getField from "../api/getField.js";
+import PlotDetailsModal from "../components/modals/PlotDetailsModal.jsx";
 import "../styles/modals.css";
 import "../styles/planting-field.css";
 
@@ -97,7 +98,7 @@ export default function PlantingField() {
       )}
 
       {selectedPlot?.state === "occupied" && (
-        <div>{/* Plot Details Modal will be added here */}</div>
+        <PlotDetailsModal plot={selectedPlot} onClose={handleCloseModal} />
       )}
 
       {error && <ErrorModal error={error} onClose={() => setError(null)} />}
