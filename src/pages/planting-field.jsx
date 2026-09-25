@@ -1,13 +1,23 @@
+// PlantingField.jsx
+
 import { useEffect, useState } from "react";
+
 import Plot from "../components/planting/Plot.jsx";
+
 import ErrorModal from "../components/modals/ErrorModal.jsx";
+import ClaimPlotModal from "../components/modals/ClaimPlotModal.jsx";
+
 import getField from "../api/getField.js";
+import "../styles/modals.css";
 import "../styles/planting-field.css";
 
 export default function PlantingField() {
   const [plots, setPlots] = useState([]);
+
   const [selectedPlot, setSelectedPlot] = useState(null);
+
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const loadField = async () => {
       try {
@@ -16,6 +26,7 @@ export default function PlantingField() {
         setPlots(response.field);
       } catch (error) {
         console.error("Failed to load field:", error);
+
         setError(error.error);
       }
     };
@@ -24,7 +35,13 @@ export default function PlantingField() {
   }, []);
 
   const handlePlotClick = (plot) => {
+    console.log("Clicked plot:", plot);
+
     setSelectedPlot(plot);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPlot(null);
   };
 
   return (
@@ -56,35 +73,27 @@ export default function PlantingField() {
           </div>
         ) : (
           <div className="planting-field-empty">
+            <div className="planting-field-empty-icon">+</div>
 
             <h2>No plots available</h2>
 
             <p>
-              There are currently no planting plots to display.
-              Please check back later.
+              There are currently no planting plots to display. Please check
+              back later.
             </p>
           </div>
         )}
       </section>
 
-      {selectedPlot && (
-        <>
-          {selectedPlot.state === "available" && (
-            <div>{/* Claim Plot Modal */}</div>
-          )}
-
-          {selectedPlot.state === "occupied" && (
-            <div>{/* Plot Details Modal */}</div>
-          )}
-        </>
+      {selectedPlot?.state === "available" && (
+        <ClaimPlotModal plot={selectedPlot} onClose={handleCloseModal} />
       )}
 
-      {error && (
-        <ErrorModal
-          error={error}
-          onClose={() => setError(null)}
-        />
+      {selectedPlot?.state === "occupied" && (
+        <div>{/* Plot Details Modal will be added here */}</div>
       )}
+
+      {error && <ErrorModal error={error} onClose={() => setError(null)} />}
     </main>
   );
 }

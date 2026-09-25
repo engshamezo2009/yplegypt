@@ -1,4 +1,6 @@
-export default function Plot({ id, state, owner, plant }) {
+// Plot.jsx
+
+export default function Plot({ id, state, owner, plant, onClick }) {
   const isOccupied = state === "occupied";
 
   return (
@@ -11,6 +13,7 @@ export default function Plot({ id, state, owner, plant }) {
           isOccupied ? "/texture/Farmland.png" : "/texture/Dirt.png"
         })`,
       }}
+      onClick={onClick}
     >
       <span className="plot-id">{id}</span>
 
