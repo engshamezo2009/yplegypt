@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import Plot from "../components/planting/Plot.jsx";
+import ErrorModal from "../components/modals/ErrorModal.jsx";
 import getField from "../api/getField.js";
 import "../styles/planting-field.css";
 
 export default function PlantingField() {
   const [plots, setPlots] = useState([]);
   const [selectedPlot, setSelectedPlot] = useState(null);
-
+  const [error, setError] = useState(null);
   useEffect(() => {
     const loadField = async () => {
       try {
@@ -15,6 +16,7 @@ export default function PlantingField() {
         setPlots(response.field);
       } catch (error) {
         console.error("Failed to load field:", error);
+        setError(error.error);
       }
     };
 
@@ -39,18 +41,30 @@ export default function PlantingField() {
       </section>
 
       <section className="planting-field-grid-section">
-        <div className="planting-field-grid">
-          {plots.map((plot) => (
-            <Plot
-              key={plot.id}
-              id={plot.id}
-              state={plot.state}
-              owner={plot.owner}
-              plant={plot.plant}
-              onClick={() => handlePlotClick(plot)}
-            />
-          ))}
-        </div>
+        {plots.length > 0 ? (
+          <div className="planting-field-grid">
+            {plots.map((plot) => (
+              <Plot
+                key={plot.id}
+                id={plot.id}
+                state={plot.state}
+                owner={plot.owner}
+                plant={plot.plant}
+                onClick={() => handlePlotClick(plot)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="planting-field-empty">
+
+            <h2>No plots available</h2>
+
+            <p>
+              There are currently no planting plots to display.
+              Please check back later.
+            </p>
+          </div>
+        )}
       </section>
 
       {selectedPlot && (
@@ -63,6 +77,13 @@ export default function PlantingField() {
             <div>{/* Plot Details Modal */}</div>
           )}
         </>
+      )}
+
+      {error && (
+        <ErrorModal
+          error={error}
+          onClose={() => setError(null)}
+        />
       )}
     </main>
   );
