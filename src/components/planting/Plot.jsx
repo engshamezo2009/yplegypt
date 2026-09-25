@@ -8,7 +8,7 @@ export default function Plot({ id, state, owner, plant, onClick }) {
       }`}
       style={{
         backgroundImage: `url(${
-          isOccupied ? "/texture/Farmland.png " : "/texture/Dirt.jpeg"
+          isOccupied ? "/texture/Farmland.jpeg " : "/texture/Dirt.jpeg"
         })`,
       }}
       onClick={onClick}
