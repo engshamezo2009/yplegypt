@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
+
 import Plot from "../components/planting/Plot.jsx";
+
 import ErrorModal from "../components/modals/ErrorModal.jsx";
+
 import ClaimPlotModal from "../components/modals/ClaimPlotModal.jsx";
+
 import getField from "../api/getField.js";
+
 import PlotDetailsModal from "../components/modals/PlotDetailsModal.jsx";
+
+import { useLoader } from "../context/LoaderContext.jsx";
+
 import "../styles/modals.css";
+
 import "../styles/planting-field.css";
 
 export default function PlantingField() {
@@ -14,8 +23,12 @@ export default function PlantingField() {
 
   const [error, setError] = useState(null);
 
+  const { setIsLoading } = useLoader();
+
   useEffect(() => {
     const loadField = async () => {
+      setIsLoading(true);
+
       try {
         const response = await getField();
 
@@ -24,6 +37,8 @@ export default function PlantingField() {
         console.error("Failed to load field:", error);
 
         setError(error.error);
+      } finally {
+        setIsLoading(false);
       }
     };
 

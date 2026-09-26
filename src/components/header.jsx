@@ -24,10 +24,10 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <div className="logo-box">
+      <NavLink className="logo-box" to={"/homepage"}>
         <img src="/Images/LogoGreen.png" alt="YPL Logo" />
         <span className="logo-text">YPL</span>
-      </div>
+      </NavLink>
 
       <button
         type="button"

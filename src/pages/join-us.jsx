@@ -247,7 +247,9 @@ export default function JoinUs() {
 
           {/* Question */}
           <div className="join-us-field">
-            <label htmlFor="join-us-question">Question</label>
+            <label htmlFor="join-us-question">
+              Why are you applying to YPL Egypt?
+            </label>
 
             <textarea
               id="join-us-question"

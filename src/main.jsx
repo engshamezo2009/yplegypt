@@ -1,11 +1,16 @@
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
+
 import App from "./app.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { LoaderProvider } from "./context/LoaderContext.jsx";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <LoaderProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </LoaderProvider>
   </StrictMode>,
 );

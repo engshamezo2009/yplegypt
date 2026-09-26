@@ -96,7 +96,7 @@ export default function About() {
   const team2026 = [
     {
       name: "Eyad Mohsen",
-      position: "President & Founder",
+      position: "President",
       image: "/Images/board-2026/1 Eyad.jpg",
       socials: {
         instagram:
