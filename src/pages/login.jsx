@@ -195,7 +195,7 @@ export default function Login() {
           </button>
         </form>
 
-        {/* <div className="login-join">
+        <div className="login-join">
           <span>Don't have an account?</span>
 
           <button
@@ -205,7 +205,7 @@ export default function Login() {
           >
             Join Us
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );

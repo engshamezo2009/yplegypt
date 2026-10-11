@@ -81,11 +81,11 @@ export default function Header() {
                 </NavLink>
               </li>
 
-              {/* <li>
+              <li>
                 <NavLink to="/join-us" id="authLink" onClick={closeMenu}>
                   Join Us
                 </NavLink>
-              </li> */}
+              </li>
             </>
           ) : (
             <li className="profile-menu">
