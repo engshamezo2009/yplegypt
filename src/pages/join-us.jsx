@@ -10,7 +10,7 @@ export default function JoinUs() {
     email: "",
     phone: "",
     password: "",
-    question: "",
+    // question: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -34,7 +34,7 @@ export default function JoinUs() {
     const email = formData.email.trim();
     const phone = formData.phone.trim();
     const password = formData.password;
-    const question = formData.question.trim();
+    // const question = formData.question.trim();
     if (!name) {
       newErrors.name = "Name is required.";
     } else if (name.length < 2) {
@@ -55,9 +55,9 @@ export default function JoinUs() {
     } else if (password.length < 8) {
       newErrors.password = "Password must be at least 8 characters.";
     }
-    if (!question) {
-      newErrors.question = "This field is required.";
-    }
+    // if (!question) {
+    //   newErrors.question = "This field is required.";
+    // }
     return newErrors;
   };
 
@@ -76,7 +76,7 @@ export default function JoinUs() {
         email: formData.email.trim(),
         phone: formData.phone.trim(),
         password: formData.password,
-        question: formData.question.trim(),
+        // question: formData.question.trim(),
       });
 
       navigate("/homepage", {
@@ -265,11 +265,11 @@ export default function JoinUs() {
               }
             /> */}
 
-            {errors.question && (
+            {/* {errors.question && (
               <span id="join-us-question-error" className="join-us-field-error">
                 {errors.question}
               </span>
-            )}
+            )} */}
           </div>
 
           {/* General Error */}
