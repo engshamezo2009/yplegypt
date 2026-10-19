@@ -247,11 +247,11 @@ export default function JoinUs() {
 
           {/* Question */}
           <div className="join-us-field">
-            <label htmlFor="join-us-question">
+            {/* <label htmlFor="join-us-question">
               Why are you applying to YPL Egypt?
-            </label>
+            </label> */}
 
-            <textarea
+            {/* <textarea
               id="join-us-question"
               name="question"
               value={formData.question}
@@ -263,7 +263,7 @@ export default function JoinUs() {
               aria-describedby={
                 errors.question ? "join-us-question-error" : undefined
               }
-            />
+            /> */}
 
             {errors.question && (
               <span id="join-us-question-error" className="join-us-field-error">
